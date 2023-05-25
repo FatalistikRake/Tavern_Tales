@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class GrabObjects : MonoBehaviour
 {
     [SerializeField]
@@ -21,14 +22,14 @@ public class GrabObjects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hitinfo = Physics2D.Raycast(raybPoint.position, transform.right, rayDistance);
+        RaycastHit2D hitInfo = Physics2D.Raycast(raybPoint.position, transform.right, rayDistance);
 
-        if (hitinfo.collider != null && hitinfo.collider.gameObject.layer == layerIndex)
+        if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex)
         {
-            //grab objects
+            //grab Objects
             if (Input.GetKeyDown(KeyCode.Space) && grabbedObjects == null)
             {
-                grabbedObjects = hitinfo.collider.gameObject;
+                grabbedObjects = hitInfo.collider.gameObject;
                 grabbedObjects.GetComponent<Rigidbody2D>().isKinematic = true;
                 grabbedObjects.transform.position = grabPoint.position;
                 grabbedObjects.transform.SetParent(transform);
