@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game/Scenes/Magazzino.unity
     guid: 68cfc01b677518448864d9c05d110458
+  - enabled: 1
+    path: Assets/_Game/Scenes/Cucina.unity
+    guid: 20b6ce919ae6bbc4196e8fd6058b60b2
   m_configObjects: {}

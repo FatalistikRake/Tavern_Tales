@@ -8,14 +8,9 @@ public class PlayerMovementTopDown : MonoBehaviour
 
     public Rigidbody2D rb;
     public Animator animator;
-    public VectorValue startingPosition;
 
-    Vector2 movement;
+    private Vector2 movement;
 
-    void Start()
-    {
-        transform.position = startingPosition.initialValue;
-    }
 
     // Update is called once per frame
     void Update()
