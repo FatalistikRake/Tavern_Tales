@@ -1,18 +1,22 @@
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TeleportManager : MonoBehaviour
 {
-    public TeleportZone[] teleportZones; // Array delle zone di teletrasporto
+    public string sceneToLoad;
+    public Vector2 coordinationStage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.tag);
         if (collision.CompareTag("Player"))
         {
-            foreach (TeleportZone zone in teleportZones)
-            {
-                zone.TeleportPlayer();
-                break;
-            }
+            /*PersistenData.instance.PlayerStartPosition = coordinationStage;*/
+            if (!SceneManager.GetAllScenes().Any(s => s.name == sceneToLoad))
+            {SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);}
+
+            collision.transform.position = coordinationStage;
         }
     }
 }

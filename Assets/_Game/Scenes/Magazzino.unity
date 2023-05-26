@@ -266,6 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 404230235}
   - component: {fileID: 404230234}
+  - component: {fileID: 404230236}
   m_Layer: 0
   m_Name: Virtual Camera taverna
   m_TagString: Untagged
@@ -328,6 +329,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &404230236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404230233}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BoundingShape2D: {fileID: 530952786}
+  m_Damping: 0.5
+  m_MaxWindowSize: -1
 --- !u!1 &530952785
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,8 +559,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38226eebee0e1cd45b80ccf9563bf43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportZones:
-  - {fileID: 1847147239}
+  sceneToLoad: 
+  coordinationStage: {x: 0, y: 0}
 --- !u!4 &920416872
 Transform:
   m_ObjectHideFlags: 0
@@ -581,7 +597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1423448195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,7 +696,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.49667907
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -884,7 +900,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675802750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.18, y: 14.49, z: -10}
+  m_LocalPosition: {x: 7.52, y: 9.21, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -978,8 +994,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1847147235}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 324dcc22d6e64194ab72143715a55346, type: 3}
+  m_Script: {fileID: 11500000, guid: 38226eebee0e1cd45b80ccf9563bf43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: 
-  coordinationStage: {x: -7.2, y: 11.8}
+  sceneToLoad: Taverna
+  coordinationStage: {x: -7.29, y: 10}
