@@ -493,7 +493,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349483016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.94, y: 9.04, z: 0}
+  m_LocalPosition: {x: 1.76, y: 5.12, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -581,7 +581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515124082}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.94, y: 9.04, z: -10}
+  m_LocalPosition: {x: 1.76, y: 5.12, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -719,7 +719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.94, y: 9.04, z: -10}
+  m_LocalPosition: {x: 1.76, y: 5.12, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1281,7 +1281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1149662252}
   - component: {fileID: 1149662254}
-  - component: {fileID: 1149662253}
+  - component: {fileID: 1149662255}
   m_Layer: 0
   m_Name: TeleportPerCucina
   m_TagString: Teleport
@@ -1304,20 +1304,6 @@ Transform:
   m_Father: {fileID: 319867316}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1149662253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1149662251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38226eebee0e1cd45b80ccf9563bf43c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: Cucina
-  coordinationStage: {x: 7.41, y: 14.34}
 --- !u!61 &1149662254
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1363,6 +1349,67 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7092962, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1149662255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149662251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324dcc22d6e64194ab72143715a55346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Cucina
+  coordinationStage: {x: 7.49, y: 15}
+--- !u!1 &1757375136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1757375138}
+  - component: {fileID: 1757375137}
+  m_Layer: 0
+  m_Name: Teleport Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1757375137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757375136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38226eebee0e1cd45b80ccf9563bf43c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportZones:
+  - {fileID: 1763811642}
+  - {fileID: 1149662255}
+--- !u!4 &1757375138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757375136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.9593587, y: 2.4609773, z: -10.026059}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1763811638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,7 +1420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1763811641}
   - component: {fileID: 1763811640}
-  - component: {fileID: 1763811639}
+  - component: {fileID: 1763811642}
   m_Layer: 0
   m_Name: TeleportPerMagazzino
   m_TagString: Teleport
@@ -1381,20 +1428,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1763811639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1763811638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38226eebee0e1cd45b80ccf9563bf43c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: Magazzino
-  coordinationStage: {x: -7.41, y: 14.23}
 --- !u!61 &1763811640
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1455,6 +1488,20 @@ Transform:
   m_Father: {fileID: 319867316}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1763811642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763811638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324dcc22d6e64194ab72143715a55346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Magazzino
+  coordinationStage: {x: -7.15, y: 15.1}
 --- !u!1 &1971772638
 GameObject:
   m_ObjectHideFlags: 0
