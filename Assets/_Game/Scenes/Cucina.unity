@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77183544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.95, y: 4.63, z: -10}
+  m_LocalPosition: {x: 1.3300002, y: 15.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38226eebee0e1cd45b80ccf9563bf43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneStateManager: {fileID: 11400000, guid: d9ddf97768d5533488f3a3f2692fdfa6, type: 2}
   sceneToLoad: Taverna
   coordinationStage: {x: 7.52, y: 9.6}
 --- !u!1 &201549238
@@ -397,7 +398,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297775014}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &297775016
 Camera:
   m_ObjectHideFlags: 0
@@ -457,7 +458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297775014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.52, y: 9.21, z: -10}
+  m_LocalPosition: {x: 1.3300002, y: 15.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -514,7 +515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &854531234
 Transform:
   m_ObjectHideFlags: 0
