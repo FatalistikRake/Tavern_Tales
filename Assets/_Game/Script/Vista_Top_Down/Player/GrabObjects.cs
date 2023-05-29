@@ -33,14 +33,17 @@ public class GrabObjects : MonoBehaviour
             grabbedObjects.GetComponent<Collider2D>().enabled = false;
             grabbedObjects.transform.position = grabPoint.position;
             grabbedObjects.transform.SetParent(transform);
+            grabbedObjects.GetComponent<OpenPersistem>().canDisable = false;
 
-            
+
         }
         else if (Input.GetKeyDown(KeyCode.Space) && grabbedObjects != null)
         {
             grabbedObjects.GetComponent<Rigidbody2D>().isKinematic = false;
             grabbedObjects.GetComponent<Collider2D>().enabled = true;
             grabbedObjects.transform.SetParent(null);
+            GameEvent.Instance.OnPikupObject(grabbedObjects);
+            grabbedObjects.GetComponent<OpenPersistem>().canDisable = true;
             grabbedObjects = null;
         }
 
