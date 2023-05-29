@@ -22,26 +22,30 @@ public class GrabObjects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(raybPoint.position, transform.right, rayDistance);
 
-        if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex)
+        RaycastHit2D hitInfo = Physics2D.Raycast(raybPoint.position, transform.up, rayDistance);
+
+        if (Input.GetKeyDown(KeyCode.Space) && grabbedObjects == null && hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex)
         {
             //grab Objects
-            if (Input.GetKeyDown(KeyCode.Space) && grabbedObjects == null)
-            {
-                grabbedObjects = hitInfo.collider.gameObject;
-                grabbedObjects.GetComponent<Rigidbody2D>().isKinematic = true;
-                grabbedObjects.transform.position = grabPoint.position;
-                grabbedObjects.transform.SetParent(transform);
-            }
-            else if (Input.GetKeyDown(KeyCode.Space))
-            {
-                grabbedObjects.GetComponent<Rigidbody2D>().isKinematic = false;
-                grabbedObjects.transform.SetParent(null);
-                grabbedObjects = null;
-            }
+            grabbedObjects = hitInfo.collider.gameObject;
+            grabbedObjects.GetComponent<Rigidbody2D>().isKinematic = true;
+            grabbedObjects.GetComponent<Collider2D>().enabled = false;
+            grabbedObjects.transform.position = grabPoint.position;
+            grabbedObjects.transform.SetParent(transform);
+
+            
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && grabbedObjects != null)
+        {
+            grabbedObjects.GetComponent<Rigidbody2D>().isKinematic = false;
+            grabbedObjects.GetComponent<Collider2D>().enabled = true;
+            grabbedObjects.transform.SetParent(null);
+            grabbedObjects = null;
         }
 
-        Debug.DrawRay(raybPoint.position, transform.right * rayDistance);
+        Debug.DrawRay(raybPoint.position, transform.up * rayDistance);
     }
+
+
 }

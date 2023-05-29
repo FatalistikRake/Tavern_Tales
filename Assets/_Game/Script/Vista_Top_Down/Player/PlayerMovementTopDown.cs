@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerMovementTopDown : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float idleThreshold = 0.01f;
 
     public Rigidbody2D rb;
     public Animator animator;
 
     private Vector2 movement;
+    private Vector2 lastMovement;
 
 
     // Update is called once per frame
@@ -24,8 +26,25 @@ public class PlayerMovementTopDown : MonoBehaviour
 
         if (movement != Vector2.zero)
         {
-            rb.velocity = Vector2.zero;
+            lastMovement = movement;
+            rb.velocity = movement.normalized * moveSpeed;
         }
+        else
+        {
+            rb.velocity = Vector2.zero;
+            animator.SetFloat("Horizontal", lastMovement.x);
+            animator.SetFloat("Vertical", lastMovement.y);
+            animator.SetFloat("Speed", 0);
+        }
+
+        /*bool isIdle = rb.velocity.magnitude < idleThreshold;
+        if (isIdle)
+        {
+            rb.velocity = Vector2.zero;
+            animator.SetFloat("Horizontal", lastMovement.x);
+            animator.SetFloat("Vertical", lastMovement.y);
+            animator.SetFloat("Speed", 0);
+        }*/
 
         // Impedisci il movimento diagonale
         if (movement.x != 0 && movement.y != 0)
@@ -33,8 +52,8 @@ public class PlayerMovementTopDown : MonoBehaviour
             // Zero out the vertical movement
             movement.y = 0f;
         }
-
     }
+
 
     void FixedUpdate()
     {
