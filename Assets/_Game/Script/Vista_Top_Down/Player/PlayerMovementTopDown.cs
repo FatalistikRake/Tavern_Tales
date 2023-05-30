@@ -36,14 +36,7 @@ public class PlayerMovementTopDown : MonoBehaviour
             animator.SetFloat("Speed", 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            animatorBibita.SetBool("pieno", true);
-        }
-        else if (Input.GetKeyDown(KeyCode.X))
-        {
-            animatorBibita.SetBool("pieno", false);
-        }
+        
 
         /*bool isIdle = rb.velocity.magnitude < idleThreshold;
         if (isIdle)
