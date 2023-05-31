@@ -18,12 +18,12 @@ public class NPCAI : MonoBehaviour
     private void Start()
     {
         startingPosition = transform.position;
-        roamPosition = GetRoamingPosition();
+        //roamPosition = GetRoamingPosition();
     }
 
     private void Update()
     {
-        pathfindingMovement.MoveTo(roamPosition);
+        //pathfindingMovement.MoveTo(roamPosition);
     }
 
 
