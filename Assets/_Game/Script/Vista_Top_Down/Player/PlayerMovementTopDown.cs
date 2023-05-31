@@ -57,26 +57,26 @@ public class PlayerMovementTopDown : MonoBehaviour
             movement.y = 0f;
         }
         
-        // Ruotare il personaggio insieme agli oggetti asse y
-         if (movement.y > 0 /*&& !m_FacingDown*/)
+        /*// Ruotare il personaggio insieme agli oggetti asse y
+         if (movement.y > 0 *//*&& !m_FacingDown*//*)
         {
             FlipY();
         }
         // Otherwise if the input is moving the player left and the player is facing down...
-        else if (movement.y < 0 /*&& m_FacingDown*/)
+        else if (movement.y < 0 *//*&& m_FacingDown*//*)
         {
             FlipY();
         }
         
-        if (movement.x > 0 /*&& !m_FacingDown*/)
+        if (movement.x > 0 *//*&& !m_FacingDown*//*)
         {
             FlipX();
         }
         // Otherwise if the input is moving the player left and the player is facing right...
-        else if (movement.x < 0 /*&& m_FacingDown*/)
+        else if (movement.x < 0 *//*&& m_FacingDown*//*)
         {
             FlipX();
-        }
+        }*/
         
         
     }
