@@ -13,6 +13,7 @@ public class PlayerMovementTopDown : MonoBehaviour
     private Vector2 lastMovement;
     
     private bool m_FacingDown = true;
+    private bool m_FacingRght = true;
 
 
     // Update is called once per frame
