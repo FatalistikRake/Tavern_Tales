@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,41 +11,45 @@ public class TeleportManager : MonoBehaviour
 
     public Transform objectToTransport; // L'oggetto da trasportare
 
-
-    private void Update()
+    private void Start()
     {
-        sceneStateManager.currentScene = SceneManager.GetActiveScene();
+        GameEvent.Instance.onPickupObject += OnItemPickup;
+    }
+
+    private void OnDestroy()
+    {
+        GameEvent.Instance.onPickupObject -= OnItemPickup;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            sceneStateManager.count++;
-            
-            
+            sceneStateManager.count++;            
 
             if (!SceneManager.GetAllScenes().Any(s => s.name == sceneToLoad))
             {
-                SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
-                Debug.Log(sceneStateManager.currentScene.name);
-                //SceneManager.SetActiveScene(sceneStateManager.currentScene);
+                StopAllCoroutines();
+                StartCoroutine(LoadSceneAsync());
             }
 
             collision.transform.position = coordinationStage;
 
-            //SceneManager.SetActiveScene(sceneStateManager.currentScene);
+            
 
-            // Trova l'oggetto da trasportare nella scena corrente
+            // Trova l'oggetto da trasportare nella scena correntesceneStateManager.currentScene
             //GameObject objectToTransport = GameObject.FindWithTag("ObjectToTransport");
 
-            if (objectToTransport != null)
-            {
-                Scene currentScene = SceneManager.GetActiveScene();
-                SceneManager.MoveGameObjectToScene(objectToTransport.gameObject, currentScene);
 
-            }
         }
+    }
+
+    IEnumerator LoadSceneAsync()
+    {
+        yield return SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
+        sceneStateManager.currentScene = SceneManager.GetSceneByName(sceneToLoad);
+        Debug.Log(sceneStateManager.currentScene.name);
+        SceneManager.SetActiveScene(sceneStateManager.currentScene);        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -58,11 +63,21 @@ public class TeleportManager : MonoBehaviour
             {
                 SceneManager.UnloadSceneAsync(sceneStateManager.previousScene);
 
-                sceneStateManager.count = 0;
-                sceneStateManager.previousScene = null;
+                sceneStateManager.resetData();
             }
-
+            GameEvent.Instance.OnSceneLoaded(sceneToLoad);
             sceneStateManager.previousScene = sceneStateManager.currentScene.name;
+        }
+    }
+
+    void OnItemPickup(GameObject item)
+    {
+        objectToTransport = item.transform;            
+        if (objectToTransport != null)
+        {
+            Scene currentScene = SceneManager.GetSceneByName("ObjectPull");
+            SceneManager.MoveGameObjectToScene(objectToTransport.gameObject, currentScene);
+            item.GetComponent<OpenPersistem>().currentScene = sceneStateManager.previousScene;
         }
     }
 }

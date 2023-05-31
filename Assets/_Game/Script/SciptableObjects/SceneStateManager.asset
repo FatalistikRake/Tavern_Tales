@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SceneStateManager
   m_EditorClassIdentifier: 
   shouldUnloadPreviousScene: 0
-  previousScene: Cucina
-  count: 1
+  previousScene: 
+  count: 0
   currentScene:
-    m_Handle: -1292
+    m_Handle: 0

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovementTopDown : MonoBehaviour
@@ -9,9 +7,13 @@ public class PlayerMovementTopDown : MonoBehaviour
 
     public Rigidbody2D rb;
     public Animator animator;
+    public Animator animatorBibita;
 
     private Vector2 movement;
     private Vector2 lastMovement;
+    
+    private bool m_FacingDown = true;
+    private bool m_FacingRght = true;
 
 
     // Update is called once per frame
@@ -37,6 +39,8 @@ public class PlayerMovementTopDown : MonoBehaviour
             animator.SetFloat("Speed", 0);
         }
 
+        
+
         /*bool isIdle = rb.velocity.magnitude < idleThreshold;
         if (isIdle)
         {
@@ -52,6 +56,29 @@ public class PlayerMovementTopDown : MonoBehaviour
             // Zero out the vertical movement
             movement.y = 0f;
         }
+        
+        // Ruotare il personaggio insieme agli oggetti asse y
+         if (movement.y > 0 /*&& !m_FacingDown*/)
+        {
+            FlipY();
+        }
+        // Otherwise if the input is moving the player left and the player is facing down...
+        else if (movement.y < 0 /*&& m_FacingDown*/)
+        {
+            FlipY();
+        }
+        
+        if (movement.x > 0 /*&& !m_FacingDown*/)
+        {
+            FlipX();
+        }
+        // Otherwise if the input is moving the player left and the player is facing right...
+        else if (movement.x < 0 /*&& m_FacingDown*/)
+        {
+            FlipX();
+        }
+        
+        
     }
 
 
@@ -60,4 +87,27 @@ public class PlayerMovementTopDown : MonoBehaviour
         // Movement
         rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movement);
     }
+    
+    private void FlipY()
+    {
+        // Switch the way the player is labelled as facing.
+        /*m_FacingDown = !m_FacingDown;*/
+
+        // Multiply the player's y local scale by -1.
+        Vector3 theScale = transform.localScale;
+        theScale.y *= -1;
+        transform.localScale = theScale;
+    }
+    
+    private void FlipX()
+    {
+        // Switch the way the player is labelled as facing.
+        /*m_FacingRight = !m_FacingRight;*/
+
+        // Multiply the player's x local scale by -1.
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
+    
 }

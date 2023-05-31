@@ -1,4 +1,9 @@
 # Tavern_Tales
 Tavern Tales un gioco bello ;)
-
-scherzavo
+.
+.
+.
+.
+.
+.
+scherzavo non abbiamo ancora neanche una demo hahahha
