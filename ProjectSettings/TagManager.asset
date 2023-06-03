@@ -8,6 +8,10 @@ TagManager:
   - Wall
   - Teleport
   - ObjectInteractable
+  - Tavoli
+  - Sedile
+  - NPC
+  - Uscita
   layers:
   - Default
   - TransparentFX
@@ -56,4 +60,7 @@ TagManager:
     locked: 0
   - name: Enemies
     uniqueID: 1973209369
+    locked: 0
+  - name: Tavoli
+    uniqueID: 402132271
     locked: 0

@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerMovementTopDown : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float idleThreshold = 0.01f;
 
     public Rigidbody2D rb;
     public Animator animator;
@@ -11,13 +10,8 @@ public class PlayerMovementTopDown : MonoBehaviour
 
     private Vector2 movement;
     private Vector2 lastMovement;
-    
-    private bool m_FacingDown = true;
-    private bool m_FacingRght = true;
 
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -39,75 +33,33 @@ public class PlayerMovementTopDown : MonoBehaviour
             animator.SetFloat("Speed", 0);
         }
 
-        
-
-        /*bool isIdle = rb.velocity.magnitude < idleThreshold;
-        if (isIdle)
-        {
-            rb.velocity = Vector2.zero;
-            animator.SetFloat("Horizontal", lastMovement.x);
-            animator.SetFloat("Vertical", lastMovement.y);
-            animator.SetFloat("Speed", 0);
-        }*/
-
         // Impedisci il movimento diagonale
         if (movement.x != 0 && movement.y != 0)
         {
             // Zero out the vertical movement
             movement.y = 0f;
         }
-        
-        /*// Ruotare il personaggio insieme agli oggetti asse y
-         if (movement.y > 0 *//*&& !m_FacingDown*//*)
+
+        foreach (Transform child in transform)
         {
-            FlipY();
+            // Calcola la direzione in base alla posizione corrente dell'oggetto figlio
+            Vector2 direction = child.position;
+
+            if (movement.x > 0)
+                direction.x = -direction.x;
+            if (movement.y > 0)
+                direction.y = -direction.y;
+
+            child.Translate(direction);
+
         }
-        // Otherwise if the input is moving the player left and the player is facing down...
-        else if (movement.y < 0 *//*&& m_FacingDown*//*)
-        {
-            FlipY();
-        }
-        
-        if (movement.x > 0 *//*&& !m_FacingDown*//*)
-        {
-            FlipX();
-        }
-        // Otherwise if the input is moving the player left and the player is facing right...
-        else if (movement.x < 0 *//*&& m_FacingDown*//*)
-        {
-            FlipX();
-        }*/
-        
-        
+
     }
 
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         // Movement
         rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movement);
     }
-    
-    private void FlipY()
-    {
-        // Switch the way the player is labelled as facing.
-        /*m_FacingDown = !m_FacingDown;*/
-
-        // Multiply the player's y local scale by -1.
-        Vector3 theScale = transform.localScale;
-        theScale.y *= -1;
-        transform.localScale = theScale;
-    }
-    
-    private void FlipX()
-    {
-        // Switch the way the player is labelled as facing.
-        /*m_FacingRight = !m_FacingRight;*/
-
-        // Multiply the player's x local scale by -1.
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
-    }
-    
 }
