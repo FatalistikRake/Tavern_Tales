@@ -40,19 +40,7 @@ public class PlayerMovementTopDown : MonoBehaviour
             movement.y = 0f;
         }
 
-        /*foreach (Transform child in transform)
-        {
-            // Calcola la direzione in base alla posizione corrente dell'oggetto figlio
-            Vector2 direction = child.position;
 
-            if (movement.x > 0)
-                direction.x = -direction.x;
-            if (movement.y > 0)
-                direction.y = -direction.y;
-
-            child.Translate(direction);
-
-        }*/
 
     }
 
