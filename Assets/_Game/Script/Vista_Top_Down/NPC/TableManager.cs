@@ -1,53 +1,57 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class TableStatus
+{
+    public int tableNumber;
+    public bool IsAvailable;
+    public List<ChairStatus> chairs = new();
+}
+
+[System.Serializable]
+public class ChairStatus
+{
+    public int chairNumber;
+    public bool isOccupied = false;
+}
 public class TableManager : MonoBehaviour
 {
-    [System.Serializable]
-    public class TableStatus
+    public Collider2D colliderSediaS;
+    public Collider2D colliderSediaD;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        public GameObject tableObject;
-        public bool isAvailable;
-        public List<GameObject> sedili;
-    }
-
-    public List<TableStatus> tables; // Lista delle informazioni sui tavoli
-
-    private void Start()
-    {
-        tables = new List<TableStatus>();
-
-        // Aggiungi tavoli alla lista e cerca i sedili associati
-        for (int i = 0; i < 10; i++)
+        if (other.CompareTag("Player") && other == colliderSediaS)
         {
-            GameObject tableObject = /* ... logic per creare il GameObject del tavolo ... */;
-
-            TableStatus tableStatus = new TableStatus
-            {
-                tableObject = tableObject,
-                isAvailable = true,
-                sedili = new List<GameObject>()
-            };
-
-            // Aggiungi i sedili associati al tavolo corrente
-            FindSedili(tableObject, tableStatus.sedili);
-
-            tables.Add(tableStatus);
+            Debug.Log("Trigger attivato con Collider 1");
+        }
+        else if (other.CompareTag("Player") && other == colliderSediaD)
+        {
+            Debug.Log("Trigger attivato con Collider 2");
         }
     }
 
-    void FindSedili(GameObject tableObject, List<GameObject> sediliList)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        GameObject[] sediliArray = GameObject.FindGameObjectsWithTag("Sedile");
-        foreach (GameObject sedile in sediliArray)
+        if (other.CompareTag("Player") && other == colliderSediaS)
         {
-            // Verifica se il sedile è associato al tavolo corrente
-            if (sedile.transform.parent == tableObject.transform)
-            {
-                sediliList.Add(sedile);
-            }
+            Debug.Log("Trigger disattivato con Collider 1");
+        }
+        else if (other.CompareTag("Player") && other == colliderSediaD)
+        {
+            Debug.Log("Trigger disattivato con Collider 2");
         }
     }
 
-    // Resto del codice...
+
+
+    void TeleportToChair(ChairStatus chair)
+    {
+        // Logica per teletrasportarsi sulla sedia
+        // ...
+    }
+
 }
+
