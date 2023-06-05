@@ -10,16 +10,12 @@ public class TableStatus
     public List<ChairStatus> chairs = new();
 }
 
-[System.Serializable]
-public class ChairStatus
-{
-    public int chairNumber;
-    public bool isOccupied = false;
-}
+
 public class TableManager : MonoBehaviour
 {
     public Collider2D colliderSediaS;
     public Collider2D colliderSediaD;
+    public TableStatus status;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
