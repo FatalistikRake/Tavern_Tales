@@ -11,6 +11,13 @@ public class PlayerMovementTopDown : MonoBehaviour
     private Vector2 movement;
     private Vector2 lastMovement;
 
+    private SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     private void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -40,7 +47,7 @@ public class PlayerMovementTopDown : MonoBehaviour
             movement.y = 0f;
         }
 
-
+        AdJustSortingLayer();
 
     }
 
@@ -49,5 +56,10 @@ public class PlayerMovementTopDown : MonoBehaviour
     {
         // Movement
         rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movement);
+    }
+
+    private void AdJustSortingLayer()
+    {
+        spriteRenderer.sortingOrder = (int)(transform.position.y * -100);
     }
 }

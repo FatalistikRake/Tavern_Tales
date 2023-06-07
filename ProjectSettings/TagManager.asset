@@ -46,14 +46,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Sfondo
     uniqueID: 3172551017
     locked: 0
   - name: Background
     uniqueID: 3852128627
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Tavoli
     uniqueID: 402132271

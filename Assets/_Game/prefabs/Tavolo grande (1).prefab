@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5125926305726415367}
   - component: {fileID: 2249431507463798413}
   - component: {fileID: 486288722478261874}
+  - component: {fileID: 6911426443829951462}
   m_Layer: 8
   m_Name: Sgabello_D
   m_TagString: Sedile
@@ -74,9 +75,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -442838669
-  m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1287808559, guid: a89c13504ded80b44a7428cd3a967a17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -147,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.6234157}
+  m_Offset: {x: 0, y: -0.5615504}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -158,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3, y: 2.3531685}
+  m_Size: {x: 2.3, y: 2.2294376}
   m_EdgeRadius: 0
 --- !u!114 &486288722478261874
 MonoBehaviour:
@@ -174,6 +175,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chairNumber: 0
   isOccupied: 0
+  SittingPosition: {fileID: 5698314185459642709}
+--- !u!114 &6911426443829951462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082719676913365153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc8f8795783d504db80cea03a435f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6141776813777171076
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +201,7 @@ GameObject:
   - component: {fileID: 2261590633859665745}
   - component: {fileID: 6261947116389601895}
   - component: {fileID: 5547457374047724025}
+  - component: {fileID: 1408606812493565986}
   m_Layer: 8
   m_Name: Sgabello_S
   m_TagString: Sedile
@@ -248,9 +263,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -442838669
-  m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1498229729, guid: a89c13504ded80b44a7428cd3a967a17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -321,7 +336,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.7100011}
+  m_Offset: {x: 0, y: -0.5986437}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -332,7 +347,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3, y: 2.2799976}
+  m_Size: {x: 2.3, y: 2.057283}
   m_EdgeRadius: 0
 --- !u!114 &5547457374047724025
 MonoBehaviour:
@@ -348,6 +363,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chairNumber: 0
   isOccupied: 0
+  SittingPosition: {fileID: 2222628008682255527}
+--- !u!114 &1408606812493565986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141776813777171076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc8f8795783d504db80cea03a435f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6208982274929761890
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,8 +387,9 @@ GameObject:
   - component: {fileID: 3236025967789303724}
   - component: {fileID: 2208196320612366426}
   - component: {fileID: 5308584826125271915}
-  - component: {fileID: 675464572563578901}
   - component: {fileID: 1002078408613155655}
+  - component: {fileID: 675464572563578901}
+  - component: {fileID: 3022357383819451393}
   m_Layer: 8
   m_Name: Tavolo grande (1)
   m_TagString: Tavoli
@@ -375,13 +404,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6208982274929761890}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.85, y: 2.6000006, z: 0.105343886}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 846470450636948942}
   - {fileID: 6327929431631671454}
+  - {fileID: 846470450636948942}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -425,7 +454,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 450116671, guid: a89c13504ded80b44a7428cd3a967a17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -464,26 +493,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &675464572563578901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6208982274929761890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 499fbee2655f54049ac8088075037d3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliderSediaS: {fileID: 6261947116389601895}
-  colliderSediaD: {fileID: 2249431507463798413}
-  status:
-    tableNumber: 0
-    IsAvailable: 1
-    chairs:
-    - {fileID: 486288722478261874}
-    - {fileID: 5547457374047724025}
 --- !u!61 &1002078408613155655
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -516,7 +525,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.23402756}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -527,8 +536,38 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.4, y: 4}
+  m_Size: {x: 6.4, y: 2.942494}
   m_EdgeRadius: 0
+--- !u!114 &675464572563578901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208982274929761890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499fbee2655f54049ac8088075037d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status:
+    tableNumber: 0
+    IsAvailable: 1
+    chairs:
+    - {fileID: 486288722478261874}
+    - {fileID: 5547457374047724025}
+--- !u!114 &3022357383819451393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208982274929761890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc8f8795783d504db80cea03a435f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7232469298858267685
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2222628008682255527}
   m_Layer: 8
-  m_Name: sitting position NPC (1)
+  m_Name: sitting position NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -584,7 +623,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7290585616674389399}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.463, y: -0.027, z: 0}
+  m_LocalPosition: {x: -0.34, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 0.71428573, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

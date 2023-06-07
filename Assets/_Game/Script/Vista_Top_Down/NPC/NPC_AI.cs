@@ -6,11 +6,13 @@ using UnityEngine;
 public class NPC_AI : MonoBehaviour
 {
     tavernamenager taverna;
+    ChairStatus sittingPosition;
+    private Collider2D colliderComponent;
 
     public float speed = 200f;
     public Transform npcGFX;
-    public ChairStatus TargetChair;
-    public Transform target;
+    private ChairStatus TargetChair;
+    private Transform target;
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
@@ -18,8 +20,11 @@ public class NPC_AI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
 
-    public Animator animator;
     bool isWaiting = false;
+    public Animator animator;
+
+
+    private SpriteRenderer spriteRenderer;
     private void Awake()
     {
         taverna = FindObjectOfType<tavernamenager>();
@@ -28,6 +33,8 @@ public class NPC_AI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        colliderComponent = GetComponent<Collider2D>();
 
         TargetChair = taverna.getfreeseat();
 
@@ -62,6 +69,10 @@ public class NPC_AI : MonoBehaviour
             path = p;
             currentWaypoint = 0;
         }
+    }
+    private void Update()
+    {
+        AdJustSortingLayer();
     }
 
     private void FixedUpdate()
@@ -102,71 +113,41 @@ public class NPC_AI : MonoBehaviour
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
         animator.SetFloat("Speed", direction.sqrMagnitude);
-        
-        
-        if (distance < 1)
+
+
+        if (distance < 1.2)
         {
             NPCSiSiede();
         }
-
-        //if (reachedEndOfPath)
-        //{
-        //    NPCSiSiede();
-        //}
     }
-
-    //void FindSedili()
-    //{
-    //    GameObject[] sediliArray = GameObject.FindGameObjectsWithTag("Sedile");
-    //    foreach (GameObject sedile in sediliArray)
-    //    {
-    //        sedili.Add(sedile);
-    //    }
-
-    //    foreach (GameObject sedile in sedili)
-    //    {
-    //        Debug.Log(sedile.name);
-    //    }
-    //}
 
     void NPCSiSiede()
     {
-        transform.position = target.transform.position;
-
+        colliderComponent.enabled = false;
+        transform.position = sittingPosition.SittingPosition.position;
         
+        spriteRenderer.sortingOrder = 1;
+
         Debug.Log("NPCSiSiede " + transform.position);
     }
+    
+    void NPCSialza()
+    {
+        colliderComponent.enabled = true;
+        spriteRenderer.sortingOrder = 0;
 
-    //int TrovaSedileDisponibile()
-    //{
-    //    for (int i = 0; i < sedili.Count; i++)
-    //    {
-    //        if (sedili[i].activeSelf)
-    //        {
-    //            target = sedili[i].transform;
-    //            Debug.Log("TrovaSedileDisponibile " + target.name);
-
-    //            return i;
-    //        }
-    //    }
-
-    //    return -1;
-    //}
-
-    //void NPCSiAlzaDalSedile(int sedileIndex)
-    //{
-    //    // L'NPC si alza dal sedile
-    //    Debug.Log("NPC si alza dal sedile " + sedileIndex);
-
-    //    // Imposta il sedile come disponibile attivando il suo GameObject
-    //    GameObject sedileDisponibile = sedili[sedileIndex];
-    //    sedileDisponibile.SetActive(true);
-    //}
+        Debug.Log("NPCSialza " + transform.position);
+    }
 
     IEnumerator SetTargetExit()
     {
         yield return new WaitForSeconds(5);
-        target = GameObject.Find("UscitaNPC").transform;
+        target = GameObject.Find("Uscita").transform;
         isWaiting = false;
+    }
+
+    private void AdJustSortingLayer()
+    {
+        spriteRenderer.sortingOrder = (int)(transform.position.y * -100);
     }
 }

@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public enum SortingLayer
@@ -8,26 +9,12 @@ public enum SortingLayer
 
 public class SortingLayerScript : MonoBehaviour
 {
-    public Transform player;
-    public Transform[] tables;
 
-    private void Update()
+    private SpriteRenderer SpriteRenderer;
+
+    private void Start()
     {
-        float playerY = player.position.y;
-
-        for (int i = 0; i < tables.Length; i++)
-        {
-            float tableY = tables[i].position.y;
-
-            if (playerY > tableY)
-            {
-                player.GetComponent<Renderer>().sortingLayerID = (int)SortingLayer.Tables;
-            }
-            else
-            {
-                player.GetComponent<Renderer>().sortingLayerID = (int)SortingLayer.Player;
-                break; // Esci dal ciclo se il player è inferiore a un tavolo
-            }
-        }
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer.sortingOrder = (int)(transform.position.y * -100);
     }
 }
