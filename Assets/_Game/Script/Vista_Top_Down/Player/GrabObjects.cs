@@ -1,10 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GrabObjects : MonoBehaviour
 {
     [SerializeField]
     private Transform grabPoint;
-
     [SerializeField]
     private Transform raybPoint;
     [SerializeField]
@@ -22,8 +22,7 @@ public class GrabObjects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        /*RaycastHit2D hitInfo = Physics2D.Raycast(raybPoint.position, transform.up, rayDistance);
+        RaycastHit2D hitInfo = Physics2D.Raycast(raybPoint.position, transform.up, rayDistance);
 
         if (Input.GetKeyDown(KeyCode.Space) && grabbedObjects == null && hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex)
         {
@@ -32,13 +31,14 @@ public class GrabObjects : MonoBehaviour
             grabbedObjects.GetComponent<Rigidbody2D>().isKinematic = true;
             grabbedObjects.GetComponent<Collider2D>().enabled = false;
             grabbedObjects.transform.position = grabPoint.position;
-            grabbedObjects.transform.SetParent(transform);
+            grabbedObjects.transform.SetParent(grabPoint);
             grabbedObjects.GetComponent<OpenPersistem>().canDisable = false;
 
 
         }
         else if (Input.GetKeyDown(KeyCode.Space) && grabbedObjects != null)
         {
+            //realase Objects
             grabbedObjects.GetComponent<Rigidbody2D>().isKinematic = false;
             grabbedObjects.GetComponent<Collider2D>().enabled = true;
             grabbedObjects.transform.SetParent(null);
@@ -47,7 +47,7 @@ public class GrabObjects : MonoBehaviour
             grabbedObjects = null;
         }
 
-        Debug.DrawRay(raybPoint.position, transform.up * rayDistance);*/
+        Debug.DrawRay(raybPoint.position, transform.up * rayDistance);
     }
 
     void OnDrawGizmosSelected()

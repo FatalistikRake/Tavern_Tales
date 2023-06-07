@@ -2017,7 +2017,7 @@ GameObject:
   - component: {fileID: 1971772643}
   - component: {fileID: 1971772645}
   - component: {fileID: 1971772644}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Bancone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

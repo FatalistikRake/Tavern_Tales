@@ -77,7 +77,7 @@ public class PlayerMovementTopDown : MonoBehaviour
             else if (movement.y < 0f)
             {
                 // Va verso sotto
-                scale.x = -.9f;
+                scale.x = .9f;
                 scale.y = .8f;
             }
             else if (movement.x > 0f)
