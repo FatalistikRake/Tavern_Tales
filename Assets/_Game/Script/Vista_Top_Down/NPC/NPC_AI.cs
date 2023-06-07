@@ -100,14 +100,14 @@ public class NPC_AI : MonoBehaviour
 
         float distance = Vector2.Distance(rb.position, target.position);
 
-        if (force.x >= 0.01f)
-        {
-            npcGFX.localScale = new Vector2(-1f, 1f);
-        }
-        else if (force.y <= -0.01f)
-        {
-            npcGFX.localScale = new Vector2(1f, 1f);
-        }
+        //if (force.x >= 0.01f)
+        //{
+        //    npcGFX.localScale = new Vector2(-1f, 1f);
+        //}
+        //else if (force.y <= -0.01f)
+        //{
+        //    npcGFX.localScale = new Vector2(1f, 1f);
+        //}
 
         // Aggiorna i parametri dell'animator in base al movimento dell'NPC
         animator.SetFloat("Horizontal", direction.x);

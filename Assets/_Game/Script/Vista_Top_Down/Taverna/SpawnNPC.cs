@@ -6,9 +6,13 @@ using UnityEngine;
 public class SpawnNPC : MonoBehaviour
 {
     public GameObject[] prefabs;
+    Collider2D colliderComponent;
 
     private void Start()
     {
+
+        colliderComponent = GetComponent<Collider2D>();
+
         // Effettua il controllo per verificare se hai assegnato i prefab all'array
         if (prefabs.Length == 0)
         {
@@ -16,17 +20,15 @@ public class SpawnNPC : MonoBehaviour
             return;
         }
 
-
-        // Spawn dei prefab casualmente con un time rate di 3 secondi
-        InvokeRepeating(nameof(SpawnPrefabs), 0f, 3f);
+        InvokeRepeating(nameof(SpawnPrefabs), 0, 5f);
     }
 
     private void SpawnPrefabs()
     {
-        foreach (var _ in Enumerable.Range(0,13))
-        {
-            Instantiate(prefabs[Random.Range(0, prefabs.Length)], transform.position, Quaternion.identity);
-        }
+        int r = Random.Range(0, prefabs.Length);
+        Instantiate(prefabs[r], transform.position, Quaternion.identity);
+
+        Debug.Log(prefabs[r].name);
     }
 
 }
