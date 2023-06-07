@@ -23,7 +23,7 @@ public class GrabObjects : MonoBehaviour
     void Update()
     {
 
-        RaycastHit2D hitInfo = Physics2D.Raycast(raybPoint.position, transform.up, rayDistance);
+        /*RaycastHit2D hitInfo = Physics2D.Raycast(raybPoint.position, transform.up, rayDistance);
 
         if (Input.GetKeyDown(KeyCode.Space) && grabbedObjects == null && hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex)
         {
@@ -47,8 +47,16 @@ public class GrabObjects : MonoBehaviour
             grabbedObjects = null;
         }
 
-        Debug.DrawRay(raybPoint.position, transform.up * rayDistance);
+        Debug.DrawRay(raybPoint.position, transform.up * rayDistance);*/
     }
 
+    void OnDrawGizmosSelected()
+    {
+        if (grabPoint == null)
+        {
+            return;
+        }
 
+        Gizmos.DrawWireSphere(grabPoint.position, rayDistance);
+    }
 }

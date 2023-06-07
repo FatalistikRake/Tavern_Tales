@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices.WindowsRuntime;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerCombact : MonoBehaviour
@@ -29,7 +27,7 @@ public class PlayerCombact : MonoBehaviour
 
     void Update()
     {
-        ControllEntranceBossComplete();
+        //ControllEntranceBossComplete();
 
         if (Time.time >= nextAttackTime)
         {
@@ -149,30 +147,30 @@ public class PlayerCombact : MonoBehaviour
         animator.SetBool("IsDead", false);
     }
 
-    void ControllEntranceBossComplete()
-    {
+//    void ControllEntranceBossComplete()
+//    {
         
-        if (TryGetComponent<BossCombact>(out var bossCombact))
-        {
-            bool entranceComplete = bossCombact.entranceComplete;
+//        if (TryGetComponent<BossCombact>(out var bossCombact))
+//        {
+//            bool entranceComplete = bossCombact.entranceComplete;
 
-            if (!entranceComplete)
-            {
-                attackDamage1 = 0;
-                attackDamage2 = 0;
-                attackDamage3 = 0;
-            }
-            else
-            {
-                attackDamage1 = 10;
-                attackDamage2 = 20;
-                attackDamage3 = 30;
-            }
-        }
-        else
-        {
-/*            Debug.Log("Non esiste questo componente");
-*/        }
+//            if (!entranceComplete)
+//            {
+//                attackDamage1 = 0;
+//                attackDamage2 = 0;
+//                attackDamage3 = 0;
+//            }
+//            else
+//            {
+//                attackDamage1 = 10;
+//                attackDamage2 = 20;
+//                attackDamage3 = 30;
+//            }
+//        }
+//        else
+//        {
+///*            Debug.Log("Non esiste questo componente");
+//*/        }
 
-    }
+//    }
 }

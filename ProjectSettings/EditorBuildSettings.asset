@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game/Scenes/Cucina.unity
     guid: 20b6ce919ae6bbc4196e8fd6058b60b2
+  - enabled: 1
+    path: Assets/_Game/Scenes/Scantinato.unity
+    guid: de915d6c28b544845a9f0296203f987b
   m_configObjects: {}

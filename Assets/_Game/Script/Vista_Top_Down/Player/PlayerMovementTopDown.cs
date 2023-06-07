@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Sequences;
+using static Unity.VisualScripting.Metadata;
 
 public class PlayerMovementTopDown : MonoBehaviour
 {
@@ -12,14 +15,26 @@ public class PlayerMovementTopDown : MonoBehaviour
     private Vector2 lastMovement;
 
     private SpriteRenderer spriteRenderer;
+    private List<Transform> children;
+    public Transform playerContainer;
+
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        children = GetChildren(transform);
+
+
+        foreach (Transform child in children)
+        {
+                Debug.Log(child.name);
+        }
+
     }
 
     private void Update()
     {
+        
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -49,6 +64,38 @@ public class PlayerMovementTopDown : MonoBehaviour
 
         AdJustSortingLayer();
 
+        foreach (Transform child in children)
+        {
+            Vector3 scale = child.localScale;
+
+            if (movement.y > 0f)
+            {
+                // Va verso sopra
+                scale.x = -.9f;
+                scale.y = .8f;
+            }
+            else if (movement.y < 0f)
+            {
+                // Va verso sotto
+                scale.x = -.9f;
+                scale.y = .8f;
+            }
+            else if (movement.x > 0f)
+            {
+                // Va verso destra
+                scale.x = .4f;
+                scale.y = 1f;
+            }
+            else if (movement.x < 0f)
+            {
+                // Va verso sinistra
+                scale.x = 0f;
+                scale.y = .4f;
+            }
+            child.localScale = scale;
+        }
+
+
     }
 
 
@@ -61,5 +108,16 @@ public class PlayerMovementTopDown : MonoBehaviour
     private void AdJustSortingLayer()
     {
         spriteRenderer.sortingOrder = (int)(transform.position.y * -100);
+    }
+
+    List<Transform> GetChildren(Transform parent)
+    {
+        List<Transform> children = new();
+
+        foreach (Transform child in parent)
+        {
+            children.Add(child);
+        }
+        return children;
     }
 }
