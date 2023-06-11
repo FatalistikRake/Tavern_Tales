@@ -105,7 +105,7 @@ public class PlayerMovementTopDown : MonoBehaviour
         {
             siPuoPosizionarePiatto = true;
             // Ottenere la posizione del piatto
-            Vector2 piattoPosition = collision.transform.position;
+            piattoPosition = collision.transform.position;
             Debug.Log("PosizionePiatto" + piattoPosition);
         }
     }

@@ -1,4 +1,7 @@
+using UnityEngine.UI;
 using UnityEngine;
+using System.Linq;
+using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -6,6 +9,15 @@ public class Inventory : MonoBehaviour
 
     private int currentSlotIndex = 0;
     public Slot[] slots;
+
+    private PlayerMovementTopDown piattoPos;
+
+
+    private void Start()
+    {
+        slots = FindObjectsOfType<Slot>().OrderBy(x => x.name).ToArray();
+        piattoPos = FindObjectOfType<PlayerMovementTopDown>();
+    }
 
     private void Update()
     {
@@ -31,15 +43,23 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < slots.Length; i++)
         {
             Color slotColor = (i == currentSlotIndex) ? Color.red : Color.white;
-            slots[i].GetComponent<SpriteRenderer>().color = slotColor;
+            slots[i].GetComponent<Image>().color = slotColor;
         }
     }
 
     private void DropItemFromCurrentSlot()
     {
-        // Rilascia l'oggetto dallo slot corrente ed chiama la funzione dello slot)
+         // Rilascia l'oggetto dallo slot corrente ed chiama la funzione dello slot
         Slot currentSlot = slots[currentSlotIndex];
-        currentSlot.GetComponent<Spawn>().SpawnDroppedItem();
+        if (piattoPos.siPuoPosizionarePiatto)
+        {
+            currentSlot.DropItem();
+        }
+        else
+        {
+            Debug.Log("Non puoi posizionare nulla");
+        }
+
     }
 
 
