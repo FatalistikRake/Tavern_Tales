@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8413356275215411893}
   - component: {fileID: 8435662328697720601}
   - component: {fileID: 2471440738047773099}
+  - component: {fileID: 1665805756274776413}
   m_Layer: 5
   m_Name: boccale button
   m_TagString: Untagged
@@ -120,4 +121,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8435662328697720601}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1665805756274776413}
+        m_TargetAssemblyTypeName: Spawn, Assembly-CSharp
+        m_MethodName: SpawnDroppedItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1665805756274776413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3047912000857905882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2a98f74f495c6409db76ec302b2f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 3841972657103155423, guid: ad6b6252a770eee4d8258b3aa8e53941, type: 3}

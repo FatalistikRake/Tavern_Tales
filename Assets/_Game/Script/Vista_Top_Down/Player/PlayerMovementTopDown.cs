@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Sequences;
-using static Unity.VisualScripting.Metadata;
 
 public class PlayerMovementTopDown : MonoBehaviour
 {
@@ -9,26 +7,29 @@ public class PlayerMovementTopDown : MonoBehaviour
 
     public Rigidbody2D rb;
     public Animator animator;
-    public Animator animatorBibita;
+    //public Animator animatorBibita;
 
     private Vector2 movement;
     private Vector2 lastMovement;
 
     private SpriteRenderer spriteRenderer;
-    private List<Transform> children;
+/*    private List<Transform> children;*/
     public Transform playerContainer;
 
+    [HideInInspector]
+    public Vector2 piattoPosition;
+    public bool siPuoPosizionarePiatto;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        children = GetChildren(transform);
+       /* children = GetChildren(transform);
 
 
         foreach (Transform child in children)
         {
-                Debug.Log(child.name);
-        }
+            Debug.Log(child.name);
+        }*/
 
     }
 
@@ -64,7 +65,9 @@ public class PlayerMovementTopDown : MonoBehaviour
 
         AdJustSortingLayer();
 
-        foreach (Transform child in children)
+
+        /// Non funziona più perché ho ingrandito il personaggio
+        /*foreach (Transform child in children)
         {
             Vector3 scale = child.localScale;
 
@@ -93,9 +96,26 @@ public class PlayerMovementTopDown : MonoBehaviour
                 scale.y = .4f;
             }
             child.localScale = scale;
+        }*/
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PosizionePiatto"))
+        {
+            siPuoPosizionarePiatto = true;
+            // Ottenere la posizione del piatto
+            Vector2 piattoPosition = collision.transform.position;
+            Debug.Log("PosizionePiatto" + piattoPosition);
         }
+    }
 
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PosizionePiatto"))
+        {
+            siPuoPosizionarePiatto = false;
+        }
     }
 
 
@@ -110,7 +130,7 @@ public class PlayerMovementTopDown : MonoBehaviour
         spriteRenderer.sortingOrder = (int)(transform.position.y * -100);
     }
 
-    List<Transform> GetChildren(Transform parent)
+    /*List<Transform> GetChildren(Transform parent)
     {
         List<Transform> children = new();
 
@@ -119,5 +139,5 @@ public class PlayerMovementTopDown : MonoBehaviour
             children.Add(child);
         }
         return children;
-    }
+    }*/
 }

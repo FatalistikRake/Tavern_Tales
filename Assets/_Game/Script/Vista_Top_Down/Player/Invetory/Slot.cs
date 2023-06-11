@@ -1,15 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
+    Inventory inventory;
+
+    public bool isFull;
+
+    private void Start()
+    {
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+    }
+
     public void DropItem()
     {
-        foreach (Transform child in transform)
+        foreach (Slot child in transform)
         {
-            GameObject.Destroy(child.gameObject);
+            child.GetComponent<Spawn>().SpawnDroppedItem();
+            Destroy(child.gameObject);
         }
     }
 }

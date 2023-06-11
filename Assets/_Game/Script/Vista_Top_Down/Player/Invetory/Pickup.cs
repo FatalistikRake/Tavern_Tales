@@ -18,10 +18,10 @@ public class Pikup : MonoBehaviour
         {
             for (int i = 0; i < inventory.slots.Length; i++)
             {
-                if (inventory.isFull[i] == false)
+                if (inventory.slots[i].isFull == false)
                 {
-                    // Item can be added 
-                    inventory.isFull[i] = true;
+                    // Item can be aded 
+                    inventory.slots[i].isFull = true;
                     Instantiate(itemButtom, inventory.slots[i].transform, false);
                     Destroy(gameObject);
                     break;

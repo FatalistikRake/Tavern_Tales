@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SceneStateManager
   m_EditorClassIdentifier: 
   shouldUnloadPreviousScene: 0
-  previousScene: Scantinato
+  previousScene: Taverna
   count: 0
   currentScene:
-    m_Handle: -202324
+    m_Handle: -1292

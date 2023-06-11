@@ -12,6 +12,7 @@ TagManager:
   - Sedile
   - NPC
   - Uscita
+  - PosizionePiatto
   layers:
   - Default
   - TransparentFX
@@ -57,6 +58,9 @@ TagManager:
     locked: 0
   - name: Tavoli
     uniqueID: 402132271
+    locked: 0
+  - name: Oggetti di scena
+    uniqueID: 426972219
     locked: 0
   - name: Player
     uniqueID: 3788629939
