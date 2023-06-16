@@ -53,14 +53,8 @@ TagManager:
   - name: Background
     uniqueID: 3852128627
     locked: 0
-  - name: Tavoli
-    uniqueID: 402132271
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Oggetti di scena
-    uniqueID: 426972219
     locked: 0
   - name: Player
     uniqueID: 3788629939

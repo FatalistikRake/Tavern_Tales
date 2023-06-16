@@ -63,7 +63,7 @@ public class PlayerMovementTopDown : MonoBehaviour
             movement.y = 0f;
         }
 
-        AdJustSortingLayer();
+        //AdJustSortingLayer();
 
 
         /// Non funziona più perché ho ingrandito il personaggio

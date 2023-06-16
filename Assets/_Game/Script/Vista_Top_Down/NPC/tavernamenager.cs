@@ -9,6 +9,6 @@ public class tavernamenager : MonoBehaviour
 
     public ChairStatus getfreeseat ()
     {
-        return tavoli.FirstOrDefault(t => t.status.IsAvailable).status.chairs.FirstOrDefault(c => c.isOccupied == false);
+        return tavoli.FirstOrDefault(t => t.status.IsAvailable)?.status.chairs.FirstOrDefault(c => c.isOccupied == false);
     }
 }

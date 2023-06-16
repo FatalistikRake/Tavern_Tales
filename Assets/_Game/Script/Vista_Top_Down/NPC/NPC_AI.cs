@@ -9,7 +9,7 @@ public class NPC_AI : MonoBehaviour
     ChairStatus sittingPosition;
     private Collider2D colliderComponent;
 
-    public float speed = 200f;
+    public float speed = 20f;
     public Transform npcGFX;
     private ChairStatus TargetChair;
     private Transform target;
@@ -38,7 +38,7 @@ public class NPC_AI : MonoBehaviour
 
         TargetChair = taverna.getfreeseat();
 
-        if (TargetChair == null && !isWaiting)
+        if (TargetChair == null /*&& !isWaiting*/)
         {
             isWaiting = true;
             StartCoroutine (SetTargetExit()); 
@@ -56,7 +56,7 @@ public class NPC_AI : MonoBehaviour
 
     void UpdatePath()
     {
-        if (seeker.IsDone())
+        if (seeker.IsDone() && target != null)
         {
             seeker.StartPath(rb.position, target.position, OnPathComplete);
         }
@@ -70,10 +70,6 @@ public class NPC_AI : MonoBehaviour
             Debug.Log(p);
             currentWaypoint = 0;
         }
-    }
-    private void Update()
-    {
-        AdJustSortingLayer();
     }
 
     private void FixedUpdate()
@@ -98,6 +94,7 @@ public class NPC_AI : MonoBehaviour
         Vector2 force = speed * Time.deltaTime * direction;
 
         rb.AddForce(force);
+        //rb.MovePosition((Vector2)path.vectorPath[currentWaypoint] * speed);
 
         float distance = Vector2.Distance(rb.position, target.position);
 
@@ -111,12 +108,12 @@ public class NPC_AI : MonoBehaviour
         //}
 
         // Aggiorna i parametri dell'animator in base al movimento dell'NPC
-        animator.SetFloat("Horizontal", direction.x);
-        animator.SetFloat("Vertical", direction.y);
-        animator.SetFloat("Speed", direction.sqrMagnitude);
+        animator.SetFloat("Horizontal", -direction.x);
+        animator.SetFloat("Vertical", -direction.y);
+        animator.SetFloat("Speed", reachedEndOfPath? 0 : 1 );
 
 
-        if (distance < 1.2)
+        if (distance < 1.2 && TargetChair != null)
         {
             NPCSiSiede();
         }
@@ -125,8 +122,14 @@ public class NPC_AI : MonoBehaviour
     void NPCSiSiede()
     {
         colliderComponent.enabled = false;
-        transform.position = sittingPosition.SittingPosition.position;
-        
+        transform.position = TargetChair.SittingPosition.position;
+        Vector2 directionplate = ((Vector2)TargetChair.PlatePosition.position - rb.position).normalized;
+
+        animator.SetFloat("Horizontal", directionplate.x);
+        animator.SetFloat("Vertical", directionplate.y);
+        animator.SetFloat("Speed", 0);
+
+
         spriteRenderer.sortingOrder = 1;
 
         Debug.Log("NPCSiSiede " + transform.position);
@@ -143,12 +146,7 @@ public class NPC_AI : MonoBehaviour
     IEnumerator SetTargetExit()
     {
         yield return new WaitForSeconds(5);
-        target = GameObject.Find("Uscita").transform;
+        target = GameObject.Find("UscitaNPC").transform;
         isWaiting = false;
-    }
-
-    private void AdJustSortingLayer()
-    {
-        spriteRenderer.sortingOrder = (int)(transform.position.y * -100);
     }
 }

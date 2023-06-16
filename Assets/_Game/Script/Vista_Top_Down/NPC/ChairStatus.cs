@@ -8,5 +8,6 @@ public class ChairStatus : MonoBehaviour
     public bool isOccupied = false;
 
     public Transform SittingPosition;
+    public Transform PlatePosition;
 }
 
