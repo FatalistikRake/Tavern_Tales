@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85096f7d27ee820459ff0026e7b020bc, type: 3}
-  m_Name: item test 2
+  m_Name: boccale pieno
   m_EditorClassIdentifier: 
   ID: 0
-  DislayName: Item test 1
-  Description: Item test 1
-  Icon: {fileID: 0}
-  MaxStackSize: 1
+  DislayName: boccale pieno
+  Description: "questo \xE8 il boccale pieno da consegnare"
+  Icon: {fileID: 21300000, guid: ec05a9b240bb8b54fbb355a96a859117, type: 3}
+  MaxStackSize: 2

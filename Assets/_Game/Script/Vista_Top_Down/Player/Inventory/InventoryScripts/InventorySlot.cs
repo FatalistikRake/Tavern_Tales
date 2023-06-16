@@ -31,22 +31,33 @@ public class InventorySlot
         stackSize = -1;
     }
 
+    public void AssignItem(InventorySlot invSlot)
+    {
+        if (itemData == invSlot.itemData) AddTostack(invSlot.stackSize);
+        else
+        {
+            itemData = invSlot.itemData;
+            stackSize = 0;
+            AddTostack(invSlot.stackSize);
+        }
+    }
+
     public void UpdateInventorySlot(InventoryItemData data, int amount)
     {
         itemData = data;
         stackSize = amount;
     }
 
-    public bool RoomleftInStack(int amountToAdd, out int amountRemaining)
+    public bool EnoughRoomLeftInStack(int amountToAdd, out int amountRemaining)
     {
         amountRemaining = itemData.MaxStackSize - stackSize;
 
-        return RoomleftInStack(amountToAdd);
+        return EnoughRoomLeftInStack(amountToAdd);
     }
 
-    public bool RoomleftInStack(int amountToAdd)
+    public bool EnoughRoomLeftInStack(int amountToAdd)
     {
-        if (stackSize + amountToAdd <= itemData.MaxStackSize) return true;
+        if (itemData == null || itemData != null && stackSize + amountToAdd <= itemData.MaxStackSize) return true;
         else return false;
     }
 
@@ -58,5 +69,20 @@ public class InventorySlot
     public void RemoveFromStack(int amount)
     {
         stackSize -= amount;
+    }
+
+    public bool SplitStack(out InventorySlot splitStack)
+    {
+        if (stackSize <= 1)
+        {
+            splitStack = null;
+            return false;
+        }
+
+        int halfStack = Mathf.RoundToInt(stackSize / 2);
+        RemoveFromStack(halfStack);
+
+        splitStack = new InventorySlot(itemData, halfStack);
+        return true;
     }
 }

@@ -13,7 +13,7 @@ public class InventorySystem
 
     public int InventorySize => InventorySlots.Count;
 
-    public UnityAction<InventorySlot> OnInvetorySlotChanged;
+    public UnityAction<InventorySlot> OnInventorySlotChanged;
 
     public InventorySystem(int size)
     {
@@ -26,27 +26,31 @@ public class InventorySystem
 
     public bool AddToInventory(InventoryItemData itemToAdd, int amountToAdd)
     {
-        /*inventorySlots[0] = new InventorySlot(itemToAdd, amountToAdd); return true;*/
+        /*inventorySlots[0] = new AssignedInventorySlot(itemToAdd, amountToAdd); return true;*/
 
         if(ContainsItem(itemToAdd, out List<InventorySlot> invSlot)) // Check whether item exists in inventory
         {
             foreach (var slot in invSlot)
             {
-                if(slot.RoomleftInStack(amountToAdd))
+                if(slot.EnoughRoomLeftInStack(amountToAdd))
                 {
                     slot.AddTostack(amountToAdd);
-                    OnInvetorySlotChanged?.Invoke(slot);
+                    OnInventorySlotChanged?.Invoke(slot);
                     return true;
                 }
             }
         }
         
-        if(HasFteeSlot(out InventorySlot freeSlot)) // Gests the first available slot
+        if(HasFreeSlot(out InventorySlot freeSlot)) // Gests the first available slot
         {
-            /*freeSlot = new InventorySlot(itemToAdd, amountToAdd);*/
-            freeSlot.UpdateInventorySlot(itemToAdd, amountToAdd);
-            OnInvetorySlotChanged?.Invoke(freeSlot);
-            return true;
+            /*freeSlot = new AssignedInventorySlot(itemToAdd, amountToAdd);*/
+            if (freeSlot.EnoughRoomLeftInStack(amountToAdd))
+            {
+                freeSlot.UpdateInventorySlot(itemToAdd, amountToAdd);
+                OnInventorySlotChanged?.Invoke(freeSlot);
+                return true;
+            }
+            
         }
 
         return false;
@@ -59,7 +63,7 @@ public class InventorySystem
         return invSlot == null ? false : true;
     }
 
-    public bool HasFteeSlot(out InventorySlot freeSlot)
+    public bool HasFreeSlot(out InventorySlot freeSlot)
     {
         freeSlot = InventorySlots.FirstOrDefault(i => i.ItemData == null);
 

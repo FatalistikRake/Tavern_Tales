@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerMovementTopDown : MonoBehaviour
 {
@@ -7,13 +9,12 @@ public class PlayerMovementTopDown : MonoBehaviour
 
     public Rigidbody2D rb;
     public Animator animator;
-    //public Animator animatorBibita;
 
+    private PlayerControls playerControls;
     private Vector2 movement;
     private Vector2 lastMovement;
 
     private SpriteRenderer spriteRenderer;
-/*    private List<Transform> children;*/
     public Transform playerContainer;
 
     [HideInInspector]
@@ -23,22 +24,37 @@ public class PlayerMovementTopDown : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-       /* children = GetChildren(transform);
+    }
 
+    private void Awake()
+    {
+        playerControls = new PlayerControls();
+        playerControls.Player.Movement.performed += OnMovementPerformed;
+        playerControls.Player.Movement.canceled += OnMovementCanceled;
+    }
 
-        foreach (Transform child in children)
-        {
-            Debug.Log(child.name);
-        }*/
+    private void OnEnable()
+    {
+        playerControls?.Enable();
+    }
 
+    private void OnDisable()
+    {
+        playerControls?.Disable();
+    }
+
+    private void OnMovementPerformed(InputAction.CallbackContext context)
+    {
+        movement = context.ReadValue<Vector2>();
+    }
+
+    private void OnMovementCanceled(InputAction.CallbackContext context)
+    {
+        movement = Vector2.zero;
     }
 
     private void Update()
     {
-        
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
@@ -63,40 +79,7 @@ public class PlayerMovementTopDown : MonoBehaviour
             movement.y = 0f;
         }
 
-        //AdJustSortingLayer();
-
-
-        /// Non funziona più perché ho ingrandito il personaggio
-        /*foreach (Transform child in children)
-        {
-            Vector3 scale = child.localScale;
-
-            if (movement.y > 0f)
-            {
-                // Va verso sopra
-                scale.x = -.9f;
-                scale.y = .8f;
-            }
-            else if (movement.y < 0f)
-            {
-                // Va verso sotto
-                scale.x = .9f;
-                scale.y = .8f;
-            }
-            else if (movement.x > 0f)
-            {
-                // Va verso destra
-                scale.x = .4f;
-                scale.y = 1f;
-            }
-            else if (movement.x < 0f)
-            {
-                // Va verso sinistra
-                scale.x = 0f;
-                scale.y = .4f;
-            }
-            child.localScale = scale;
-        }*/
+        // AdJustSortingLayer();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -118,26 +101,8 @@ public class PlayerMovementTopDown : MonoBehaviour
         }
     }
 
-
-    private void FixedUpdate()
-    {
-        // Movement
-        rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movement);
-    }
-
     private void AdJustSortingLayer()
     {
         spriteRenderer.sortingOrder = (int)(transform.position.y * -100);
     }
-
-    /*List<Transform> GetChildren(Transform parent)
-    {
-        List<Transform> children = new();
-
-        foreach (Transform child in parent)
-        {
-            children.Add(child);
-        }
-        return children;
-    }*/
 }
