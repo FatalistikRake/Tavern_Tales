@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6842493065904229109}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NPC_GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 2535721355759168127}
   - component: {fileID: 1825289001298038186}
   - component: {fileID: 2928615253764208453}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NPC_4
   m_TagString: NPC
   m_Icon: {fileID: 0}

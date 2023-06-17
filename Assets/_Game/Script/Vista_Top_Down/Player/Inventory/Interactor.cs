@@ -10,9 +10,6 @@ public class Interactor : MonoBehaviour
     public float verticalRadius;
     public float horizontalRadius;
 
-
-
-
     public bool IsInteracting { get; private set; }
 
 
