@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine;
 
 public class InventoryUIController : MonoBehaviour
 {
@@ -31,11 +29,11 @@ public class InventoryUIController : MonoBehaviour
         // if (Keyboard.current.bKey.wasPressedThisFrame) DisplayInventory(new PrimaryInventorySystem(Random.Range(20, 30)));
 
         //si apre con e
-        if (chestPanel.gameObject.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame) 
+        if (chestPanel.gameObject.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
             chestPanel.gameObject.SetActive(false);
-        
+
         // si apre con b
-        if (playerBackpackPanel.gameObject.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame) 
+        if (playerBackpackPanel.gameObject.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
             playerBackpackPanel.gameObject.SetActive(false);
     }
 
@@ -44,7 +42,7 @@ public class InventoryUIController : MonoBehaviour
         chestPanel.gameObject.SetActive(true);
         chestPanel.RefreshDynamicInventory(invToDisplay);
     }
-    
+
     void DisplayPlayerBackpack(InventorySystem invToDisplay)
     {
         playerBackpackPanel.gameObject.SetActive(true);

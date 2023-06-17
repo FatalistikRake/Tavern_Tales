@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -22,6 +21,16 @@ public class SortingLayerScript : SingletonClass<SortingLayerScript>
 
     private void Update()
     {
+        // Controllo se spunta un nuovo NPC e lo aggiungo alla lista dei personaggi
+        GameObject[] npcObjects = GameObject.FindGameObjectsWithTag("NPC");
+        foreach (GameObject npcObject in npcObjects)
+        {
+            if (!characters.Contains(npcObject.transform))
+            {
+                characters.Add(npcObject.transform);
+            }
+        }
+
         foreach (Transform obj in objectsToSort)
         {
             SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();

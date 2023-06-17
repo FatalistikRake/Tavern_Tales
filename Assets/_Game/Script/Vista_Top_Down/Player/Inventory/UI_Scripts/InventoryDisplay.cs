@@ -39,7 +39,6 @@ public abstract class InventoryDisplay : MonoBehaviour
     {
         bool isShiftPressed = Keyboard.current.leftShiftKey.isPressed;
 
-
         // Lo slot cliccato ha un oggetto - il mouse non ha un oggetto - raccogli quell'oggetto.
 
         if (clickedUISlot.AssignedInventorySlot.ItemData != null && mouseInventoryItem.AssignedInventorySlot.ItemData == null)

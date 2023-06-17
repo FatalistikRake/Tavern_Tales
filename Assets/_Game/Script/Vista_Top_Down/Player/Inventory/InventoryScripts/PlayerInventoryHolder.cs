@@ -13,17 +13,17 @@ public class PlayerInventoryHolder : InventoryHolder
 
     public static UnityAction<InventorySystem> OnPlayerBackpackDisplayRequested;
 
-    protected override void Awake()
+    /*protected override void Awake()
     {
         base.Awake();
 
         secondaryInventorySystem = new InventorySystem(secondaryInventorySize);
-    }
+    }*/
 
     void Update()
     {
         ///    COMMENTARE QUESTA RIGA QUI SOTTO PER TORGLIERE IL SECONDO INVENTARIO 
-        if (Keyboard.current.bKey.wasPressedThisFrame) OnPlayerBackpackDisplayRequested?.Invoke(secondaryInventorySystem);
+        // if (Keyboard.current.bKey.wasPressedThisFrame) OnPlayerBackpackDisplayRequested?.Invoke(secondaryInventorySystem);
     }
 
     public bool AddToInventory(InventoryItemData data, int amount)

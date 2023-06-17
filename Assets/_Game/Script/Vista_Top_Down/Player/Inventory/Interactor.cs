@@ -29,10 +29,7 @@ public class Interactor : MonoBehaviour
             {
                 var interactable = colliders[i].GetComponent<IInteractable>();
 
-                if (interactable != null)
-                {
-                    StartInteraction(interactable);
-                }
+                if (interactable != null) StartInteraction(interactable);
             }
         }
         // Disegna la capsula sovrapposta con l'asse verticale più stretta

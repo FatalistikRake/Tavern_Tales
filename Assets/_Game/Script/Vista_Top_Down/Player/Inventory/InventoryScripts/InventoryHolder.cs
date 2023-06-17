@@ -9,11 +9,11 @@ public class InventoryHolder : MonoBehaviour
     [SerializeField] private int invetorySize;
     [SerializeField] protected InventorySystem primaryInventorySystem;
 
-    public InventorySystem PrimaryInventorySystem => primaryInventorySystem;
+    public InventorySystem InventorySystem => primaryInventorySystem;
 
     public static UnityAction<InventorySystem> OnDynamicInventoryDisplayRequested;
 
-    protected virtual void Awake()
+    private void Awake()
     {
         primaryInventorySystem = new InventorySystem(invetorySize);
     }
