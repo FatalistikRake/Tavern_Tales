@@ -8,12 +8,10 @@ public class SortingLayerScript : SingletonClass<SortingLayerScript>
     public List<Transform> objectsToSort;
     public List<Transform> characters;
     private Transform player;
-    private Transform npc;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
-        characters.Add(npc);
     }
 
     private void Start()
@@ -24,7 +22,6 @@ public class SortingLayerScript : SingletonClass<SortingLayerScript>
 
     private void Update()
     {
-        npc = GameObject.Find(nameof(CompareTag("NPC"))).transform;
         foreach (Transform obj in objectsToSort)
         {
             SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
