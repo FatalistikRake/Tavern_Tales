@@ -17,9 +17,12 @@ public class MouseItemData : MonoBehaviour
     public TextMeshProUGUI ItemCount;
     public InventorySlot AssignedInventorySlot;
 
+    private Transform _playerTransform;
+
     private void Awake()
     {
         ItemSprite.color = Color.clear;
+        ItemSprite.preserveAspect = true; 
         ItemCount.text = "";
     }
 
@@ -39,6 +42,8 @@ public class MouseItemData : MonoBehaviour
 
             if (Mouse.current.leftButton.wasPressedThisFrame && !isPointerOverUIObject())
             {
+
+
                 ClearSlot();
             }
         }

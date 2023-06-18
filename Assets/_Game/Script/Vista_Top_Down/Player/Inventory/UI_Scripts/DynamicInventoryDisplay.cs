@@ -1,37 +1,20 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using UnityEditor.Profiling;
 
 public class DynamicInventoryDisplay : InventoryDisplay
 {
     [SerializeField] protected InventorySlot_UI slotPrefab;
 
-    protected override void Start()
-    {
-        // InventoryHolder.OnDynamicInventoryDisplayRequested += RefreshDynamicInventory;
-        base.Start();
-
-        // AssignSLot(primaryInventorySystem);
-    }
-
-
-    //private void OnDestroy()
-    //{
-    //    // InventoryHolder.OnDynamicInventoryDisplayRequested -= RefreshDynamicInventory;
-    //}
-
-    public void RefreshDynamicInventory(InventorySystem invToDisplay)
+    public void RefreshDynamicInventory(InventorySystem invToDisplay, int offset)
     {
         ClearSlots();
         inventorySystem = invToDisplay;
         if (inventorySystem != null) inventorySystem.OnInventorySlotChanged += UpdateSlot;
-        AssignSLot(invToDisplay);
+        AssignSlot(invToDisplay);
     }
 
-    public override void AssignSLot(InventorySystem invToDisplay)
+    public override void AssignSlot(InventorySystem invToDisplay)
     {
         ClearSlots();
 
@@ -47,6 +30,7 @@ public class DynamicInventoryDisplay : InventoryDisplay
             uiSlot.UpdateUISlot();
         }
     }
+
 
     private void ClearSlots()
     {

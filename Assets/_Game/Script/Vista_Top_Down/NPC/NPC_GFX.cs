@@ -28,7 +28,7 @@ public class NPC_GFX : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 movement = movementDirection.normalized * speed;
-        rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+        rb.MovePosition(rb.Position + movement * Time.fixedDeltaTime);
 
         // Aggiorna i parametri dell'animator in base al movimento dell'NPC
         animator.SetFloat("Horizontal", movement.x);

@@ -1,10 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public abstract class InventoryDisplay : MonoBehaviour
@@ -22,7 +17,7 @@ public abstract class InventoryDisplay : MonoBehaviour
 
     }
 
-    public abstract void AssignSLot(InventorySystem invToDispay);
+    public abstract void AssignSlot(InventorySystem invToDispay);
 
     protected virtual void UpdateSlot(InventorySlot updateSlot)
     {

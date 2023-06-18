@@ -3,25 +3,23 @@ using UnityEngine;
 
 public class InventoryUIController : MonoBehaviour
 {
-    public DynamicInventoryDisplay chestPanel;
+    public DynamicInventoryDisplay InventoryPanel;
     public DynamicInventoryDisplay playerBackpackPanel;
 
     private void Awake()
     {
-        chestPanel.gameObject.SetActive(false);
+        InventoryPanel.gameObject.SetActive(false);
         playerBackpackPanel.gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
         InventoryHolder.OnDynamicInventoryDisplayRequested += DisplayInventory;
-        PlayerInventoryHolder.OnPlayerBackpackDisplayRequested += DisplayPlayerBackpack;
     }
 
     private void OnDisable()
     {
         InventoryHolder.OnDynamicInventoryDisplayRequested -= DisplayInventory;
-        PlayerInventoryHolder.OnPlayerBackpackDisplayRequested -= DisplayPlayerBackpack;
     }
 
     private void Update()
@@ -29,23 +27,17 @@ public class InventoryUIController : MonoBehaviour
         // if (Keyboard.current.bKey.wasPressedThisFrame) DisplayInventory(new PrimaryInventorySystem(Random.Range(20, 30)));
 
         //si apre con e
-        if (chestPanel.gameObject.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
-            chestPanel.gameObject.SetActive(false);
+        if (InventoryPanel.gameObject.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
+            InventoryPanel.gameObject.SetActive(false);
 
         // si apre con b
         if (playerBackpackPanel.gameObject.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
             playerBackpackPanel.gameObject.SetActive(false);
     }
 
-    void DisplayInventory(InventorySystem invToDisplay)
+    void DisplayInventory(InventorySystem invToDisplay, int offset)
     {
-        chestPanel.gameObject.SetActive(true);
-        chestPanel.RefreshDynamicInventory(invToDisplay);
-    }
-
-    void DisplayPlayerBackpack(InventorySystem invToDisplay)
-    {
-        playerBackpackPanel.gameObject.SetActive(true);
-        playerBackpackPanel.RefreshDynamicInventory(invToDisplay);
+        InventoryPanel.gameObject.SetActive(true);
+        InventoryPanel.RefreshDynamicInventory(invToDisplay, offset);
     }
 }

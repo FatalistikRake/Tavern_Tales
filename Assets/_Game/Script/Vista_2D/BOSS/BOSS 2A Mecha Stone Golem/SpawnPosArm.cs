@@ -50,10 +50,10 @@ public class SpawnPosArm : MonoBehaviour
             projectile.GetComponent<ArmShot>().playerTransform = direction;
 
             //// Utilizzo LookAt per far puntare il proiettile nella direzione corretta
-            //projectile.transform.LookAt(player.position);
+            //projectile.transform.LookAt(player.Position);
 
             //// Reimposto la rotazione del proiettile utilizzando Quaternion.Euler per mantenere l'orientamento  
-            //projectile.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, projectile.transform.rotation.eulerAngles.z));
+            //projectile.transform.Rotation = Quaternion.Euler(new Vector3(0f, 0f, projectile.transform.Rotation.eulerAngles.z));
 
             projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
