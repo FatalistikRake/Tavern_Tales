@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eaf5b44bdc4a4847a3b22f6dcbaa558, type: 3}
+  m_Name: Default Shop List Forno
+  m_EditorClassIdentifier: 
+  _items:
+  - ItemData: {fileID: 11400000, guid: 2c3c8476d910d0f4c9f78f3af781482a, type: 2}
+    Amount: 0
+  _maxAllowedGold: 1000
+  _sellMarckUp: 0.29
+  _buyMarkUp: 0.5

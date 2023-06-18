@@ -11,10 +11,10 @@ public class DynamicInventoryDisplay : InventoryDisplay
         ClearSlots();
         inventorySystem = invToDisplay;
         if (inventorySystem != null) inventorySystem.OnInventorySlotChanged += UpdateSlot;
-        AssignSlot(invToDisplay);
+        AssignSlot(invToDisplay, 0);
     }
 
-    public override void AssignSlot(InventorySystem invToDisplay)
+    public override void AssignSlot(InventorySystem invToDisplay, int offset)
     {
         ClearSlots();
 

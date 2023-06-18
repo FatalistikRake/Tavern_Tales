@@ -19,18 +19,29 @@ public class MouseItemData : MonoBehaviour
 
     private Transform _playerTransform;
 
+    [HideInInspector]
+    public Transform piattoPosition;
+    Collider2D collision;
+
     private void Awake()
     {
         ItemSprite.color = Color.clear;
         ItemSprite.preserveAspect = true; 
         ItemCount.text = "";
+
+        _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        if (_playerTransform == null) Debug.Log("Player not found");
     }
 
     public void UpdateMouseSlot(InventorySlot invSlot)
     {
         AssignedInventorySlot.AssignItem(invSlot);
-        ItemSprite.sprite = invSlot.ItemData.Icon;
-        ItemCount.text = invSlot.StackSize.ToString();
+        UpdateMouseSlot();
+    }
+    public void UpdateMouseSlot()
+    {
+        ItemSprite.sprite = AssignedInventorySlot.ItemData.Icon;
+        ItemCount.text = AssignedInventorySlot.StackSize.ToString();
         ItemSprite.color = Color.white;
     }
 
@@ -40,11 +51,23 @@ public class MouseItemData : MonoBehaviour
         {
             transform.position = Mouse.current.position.ReadValue();
 
-            if (Mouse.current.leftButton.wasPressedThisFrame && !isPointerOverUIObject())
+            if (Mouse.current.leftButton.wasPressedThisFrame && !isPointerOverUIObject() /*&& collision.CompareTag("PosizionePiatto")*/)
             {
+                piattoPosition = collision.transform;
+                if (AssignedInventorySlot.ItemData.ItemPrefab != null) Instantiate(AssignedInventorySlot.ItemData.ItemPrefab, piattoPosition);
+                Debug.Log("PosizionePiatto" + piattoPosition);
 
 
-                ClearSlot();
+                if(AssignedInventorySlot.StackSize > 1)
+                {
+                    AssignedInventorySlot.AddTostack(-1);
+                    UpdateMouseSlot();
+                }
+                else
+                {
+                    ClearSlot();
+                }
+                
             }
         }
     }

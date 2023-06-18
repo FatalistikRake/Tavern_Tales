@@ -1,9 +1,10 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class InventoryUIController : MonoBehaviour
 {
-    public DynamicInventoryDisplay InventoryPanel;
+    [FormerlySerializedAs ("ChestPanel")] public DynamicInventoryDisplay InventoryPanel;
     public DynamicInventoryDisplay playerBackpackPanel;
 
     private void Awake()
@@ -15,11 +16,13 @@ public class InventoryUIController : MonoBehaviour
     private void OnEnable()
     {
         InventoryHolder.OnDynamicInventoryDisplayRequested += DisplayInventory;
+        PlayerInventoryHolder.OnPlayerInventoryDisplayRequested += DisplayPlayerInventory;
     }
 
     private void OnDisable()
     {
         InventoryHolder.OnDynamicInventoryDisplayRequested -= DisplayInventory;
+        PlayerInventoryHolder.OnPlayerInventoryDisplayRequested -= DisplayPlayerInventory;
     }
 
     private void Update()
@@ -39,5 +42,11 @@ public class InventoryUIController : MonoBehaviour
     {
         InventoryPanel.gameObject.SetActive(true);
         InventoryPanel.RefreshDynamicInventory(invToDisplay, offset);
+    }
+    
+    void DisplayPlayerInventory(InventorySystem invToDisplay, int offset)
+    {
+        playerBackpackPanel.gameObject.SetActive(true);
+        playerBackpackPanel.RefreshDynamicInventory(invToDisplay, offset);
     }
 }

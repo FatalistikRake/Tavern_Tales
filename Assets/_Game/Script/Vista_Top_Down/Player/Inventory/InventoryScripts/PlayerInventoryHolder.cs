@@ -5,7 +5,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerInventoryHolder : InventoryHolder
 {
-    public static UnityAction<InventorySystem, int> OnPlayerInventoryChanged;
+    public static UnityAction OnPlayerInventoryChanged;
+
+    public static UnityAction<InventorySystem, int> OnPlayerInventoryDisplayRequested;
 
     private void Start()
     {
@@ -18,17 +20,14 @@ public class PlayerInventoryHolder : InventoryHolder
         if (data.playerInventory.InvSystem != null)
         {
             this.primaryInventorySystem = data.playerInventory.InvSystem;
-            OnPlayerInventoryChanged?.Invoke(primaryInventorySystem, 0);
+            OnPlayerInventoryChanged?.Invoke();
         }
     }
 
     void Update()
     {
         // COMMENTA QUESTA RIGA QUI SOTTO PER TOGLIERE IL SECONDO INVENTARIO
-        if (Keyboard.current.bKey.wasPressedThisFrame)
-        {
-            OnPlayerInventoryChanged?.Invoke(primaryInventorySystem, offset);
-        }
+        // if (Keyboard.current.bKey.wasPressedThisFrame) OnPlayerInventoryDisplayRequested?.Invoke(primaryInventorySystem, offset);
     }
 
     public bool AddToInventory(InventoryItemData data, int amount)
