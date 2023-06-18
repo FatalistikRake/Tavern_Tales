@@ -1,21 +1,21 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
+//using System;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public class StaticInventoryDisplay : InventoryDisplay
-{
-    [SerializeField] private InventoryHolder inventoryHolder;
-    [SerializeField] private InventorySlot_UI[] slots;
+//public class StaticInventoryDisplay : InventoryDisplay
+//{
+//    [SerializeField] private InventoryHolder inventoryHolder;
+//    [SerializeField] private InventorySlot_UI[] slots;
 
-    private void OnEnable()
-    {
-        PlayerInventoryHolder.OnPlayerInventoryChanged += RefreshStaticDisplay;
-    }
+//    private void OnEnable()
+//    {
+//        PlayerInventoryHolder.OnPlayerInventoryChanged += RefreshStaticDisplay;
+//    }
 
-    private void OnDisable()
-    {
-        PlayerInventoryHolder.OnPlayerInventoryChanged -= RefreshStaticDisplay;
-    }
+//    private void OnDisable()
+//    {
+//        PlayerInventoryHolder.OnPlayerInventoryChanged -= RefreshStaticDisplay;
+//    }
 
     private void RefreshStaticDisplay()
     {
@@ -33,16 +33,16 @@ public class StaticInventoryDisplay : InventoryDisplay
         AssignSlot(inventorySystem, 0);
     }
 
-    protected override void Start()
-    {
-        base.Start();
+//    protected override void Start()
+//    {
+//        base.Start();
 
-        RefreshStaticDisplay();
-    }
+//        RefreshStaticDisplay();
+//    }
 
-    public override void AssignSlot(InventorySystem invToDisplay, int offset)
-    {
-        slotDictionary = new Dictionary<InventorySlot_UI, InventorySlot>();
+//    public override void AssignSlot(InventorySystem invToDisplay, int offset)
+//    {
+//        slotDictionary = new Dictionary<InventorySlot_UI, InventorySlot>();
 
         int inventorySlotCount = invToDisplay.InventorySlots.Count;
 
