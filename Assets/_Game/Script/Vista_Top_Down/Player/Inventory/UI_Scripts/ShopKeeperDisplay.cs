@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +11,7 @@ using UnityEngine.UI;
 public class ShopKeeperDisplay : MonoBehaviour
 {
     [SerializeField] private ShopSlotUI _shopSlotPrefab;
-    [SerializeField] private ShoppingCartItemUI _shoppingCartItemUIPrefab;
+    [SerializeField] private ShoppingCartItemUI _shoppingCartItemPrefab;
 
     [SerializeField] private Button _buyTab;
     [SerializeField] private Button _sellTab;
@@ -54,7 +56,7 @@ public class ShopKeeperDisplay : MonoBehaviour
         _buyButton.gameObject.SetActive(false);
         _basketTotal = 0;
         _playerGoldText.text = $"Player Gold: {_playerInventoryHolder.PrimaryInventorySystem.Gold}";
-        _shopGoldText.text = $"Player Gold: {_shopSystem.AvaiableGold}";
+        _shopGoldText.text = $"Shop Gold: {_shopSystem.AvaiableGold}";
 
         DisplayShopInventory();
     }
@@ -90,4 +92,70 @@ public class ShopKeeperDisplay : MonoBehaviour
 
     }
 
+    public void AddItemCart(ShopSlotUI shopSlotUI)
+    {
+        var data = shopSlotUI.AssingnedItemSlot.ItemData;
+
+        UpdateItemPreview(shopSlotUI);
+
+        var price = GetModifiedPrice(data, 1, shopSlotUI.MarkUp);
+
+        if (_shoppingCart.ContainsKey(data))
+        {
+            _shoppingCart[data]++;
+            var newString = $"{data.DislayName} ({price}G) x {_shoppingCart[data]}";
+            _shoppingCartUI[data].SetItemText(newString);
+        }
+        else
+        {
+            _shoppingCart.Add(data, 1);
+
+            var shoppingCartTextObj = Instantiate(_shoppingCartItemPrefab, _shoppingCartContentPanel.transform);
+            var newString = $"{data.DislayName} ({price}G) x 1";
+            shoppingCartTextObj.SetItemText(newString);
+            _shoppingCartUI.Add(data, shoppingCartTextObj);
+        }
+
+        Debug.Log(_basketTotal + "bastetotal");
+        _basketTotal += price;
+        _basketTotalText.text = $"Total: {_basketTotal}G";
+
+        if (_basketTotal > 0 && !_basketTotalText.IsActive())
+        {
+            _basketTotalText.enabled = true;
+            _buyButton.gameObject.SetActive(true);
+        }
+
+        CheckCartVsAvaiableGold();
+    }
+
+    private bool _isSelling;
+
+    private void CheckCartVsAvaiableGold()
+    {
+        var goldToCheck = _isSelling ? _shopSystem.AvaiableGold : _playerInventoryHolder.PrimaryInventorySystem.Gold;
+        _basketTotalText.color = _basketTotal > goldToCheck ? Color.red : Color.white;
+
+        if (_isSelling || _playerInventoryHolder.PrimaryInventorySystem.CheckInventoryRemaining(_shoppingCart)) return;
+
+        _basketTotalText.text = "Not enough room in inventory";
+        _basketTotalText.color = Color.red;
+    }
+
+    private static int GetModifiedPrice(InventoryItemData data, int amount, float markUp)
+    {
+        var baseValue = data.GoldValue * amount;
+
+        return Mathf.RoundToInt(baseValue + baseValue * markUp);
+    }
+
+    private void UpdateItemPreview(ShopSlotUI shopSlotUI)
+    {
+
+    }
+
+    public void RemoveItemFromCart(ShopSlotUI shopSlotUI)
+    {
+        
+    }
 }

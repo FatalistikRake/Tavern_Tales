@@ -16,6 +16,6 @@ MonoBehaviour:
   DislayName: boccale pieno
   Description: "questo \xE8 il boccale pieno da consegnare"
   Icon: {fileID: 21300000, guid: ec05a9b240bb8b54fbb355a96a859117, type: 3}
-  MaxStackSize: 2
-  GoldValue: 0
+  MaxStackSize: 5
+  GoldValue: 10
   ItemPrefab: {fileID: 6016482194618675519, guid: e0c42c4da5da63d438bb7c32edb0323d, type: 3}
