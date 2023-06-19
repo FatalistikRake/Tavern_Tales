@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class ShopSlot : ItemSlot
 {
-    // Start is called before the first frame update
-    void Start()
+    public ShopSlot()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ClearSlot();
     }
 }

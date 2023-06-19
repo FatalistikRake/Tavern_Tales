@@ -53,8 +53,8 @@ public class MouseItemData : MonoBehaviour
 
             if (Mouse.current.leftButton.wasPressedThisFrame && !isPointerOverUIObject() /*&& collision.CompareTag("PosizionePiatto")*/)
             {
-                piattoPosition = collision.transform;
-                if (AssignedInventorySlot.ItemData.ItemPrefab != null) Instantiate(AssignedInventorySlot.ItemData.ItemPrefab, piattoPosition);
+                // piattoPosition = collision.transform;
+                if (AssignedInventorySlot.ItemData.ItemPrefab != null) Instantiate(AssignedInventorySlot.ItemData.ItemPrefab, _playerTransform.position, Quaternion.identity);
                 Debug.Log("PosizionePiatto" + piattoPosition);
 
 

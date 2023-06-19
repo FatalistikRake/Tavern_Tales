@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.Rendering;
 
+[System.Serializable]
 public class ShopSystem
 {
-    private List<ShopSlot> _shopInventory;
-    private int _avaiableGold;
-    private float _buyMarckUp;
-    private float _sellMarckUp;
+    [SerializeField] private List<ShopSlot> _shopInventory;
+    [SerializeField] private int _avaiableGold;
+    [SerializeField] private float _buyMarckUp;
+    [SerializeField] private float _sellMarckUp;
+
+    public List<ShopSlot> ShopInventory => _shopInventory;
+
+    public int AvaiableGold => _avaiableGold;
+
+    public float BuyMarkUP => _buyMarckUp;
+    public float SellMarkUP => _sellMarckUp;
 
     public ShopSystem(int Size, int gold, float buyMarkUp, float sellMarckUp)
     {

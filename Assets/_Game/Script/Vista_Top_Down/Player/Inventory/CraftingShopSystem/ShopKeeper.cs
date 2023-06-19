@@ -8,7 +8,10 @@ using UnityEngine.Events;
 public class ShopKeeper : MonoBehaviour, IInteractable
 {
     [SerializeField] private ShopItemList _shopitemsHeld;
-    private ShopSystem _shopSystem;
+    [SerializeField] private ShopSystem _shopSystem;
+
+    public static UnityAction<ShopSystem, PlayerInventoryHolder> OnShopWindowsRequest;
+    private UnityAction<IInteractable> onInteractionComplete;
 
     private void Awake()
     {
@@ -16,19 +19,29 @@ public class ShopKeeper : MonoBehaviour, IInteractable
         
         foreach (var item in _shopitemsHeld.Items)
         {
-            Debug.Log
+            Debug.Log($"{item.ItemData.DislayName}: {item.Amount}");
             _shopSystem.AddToShop(item.ItemData, item.Amount);
         }
     }
 
-    public UnityAction<IInteractable> OnInteractionComplete { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
-    public void EndInteraction()
+    public UnityAction<IInteractable> OnInteractionComplete { get => onInteractionComplete; set => onInteractionComplete = value; }
+    public void Interact(Interactor interactor, out bool interactSuccessful)
     {
-        throw new System.NotImplementedException();
+        var playerInv = interactor.GetComponent<PlayerInventoryHolder>();
+
+        if (playerInv != null)
+        {
+            OnShopWindowsRequest?.Invoke(_shopSystem, playerInv);
+            interactSuccessful = true;
+        }
+        else
+        {
+            interactSuccessful = false;
+            Debug.LogError("Player Inventory cot found");
+        }
     }
 
-    public void Interact(Interactor interactor, out bool interactSuccessful)
+    public void EndInteraction()
     {
         throw new System.NotImplementedException();
     }
