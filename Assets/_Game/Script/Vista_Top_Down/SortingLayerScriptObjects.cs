@@ -25,9 +25,9 @@ public class SortingLayerScript : SingletonClass<SortingLayerScript>
         GameObject[] npcObjects = GameObject.FindGameObjectsWithTag("NPC");
         foreach (GameObject npcObject in npcObjects)
         {
-            if (!characters.Contains(npcObject.transform))
+            if (!objectsToSort.Contains(npcObject.transform))
             {
-                characters.Add(npcObject.transform);
+                objectsToSort.Add(npcObject.transform);
             }
         }
 
