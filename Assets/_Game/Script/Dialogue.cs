@@ -5,126 +5,129 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    //fields
-    //window
+    //Fields
+    //Window
     public GameObject window;
-    //indicator
-    public GameObject button;
-    //text component
+    //Indicator
+    public GameObject indicator;
+    //Text component
     public TMP_Text dialogueText;
-    //dialogues list
+    //Dialogues list
     public List<string> dialogues;
-    //writing speed
+    //Writing speed
     public float writingSpeed;
-    //index on dialogue
+    //Index on dialogue
     private int index;
-    //character index
-    private int charindex;
-    //starded boolean
-    private bool Started;
-    //wait for nect bolean
-    private bool WaitForNext;
+    //Character index
+    private int charIndex;
+    //Started boolean
+    private bool started;
+    //Wait for next boolean
+    private bool waitForNext;
 
     private void Awake()
     {
-        ToggleButton(false);
+        ToggleIndicator(false);
         ToggleWindow(false);
     }
 
-    //show window
     private void ToggleWindow(bool show)
     {
         window.SetActive(show);
     }
-
-    //hide indicator
-    public void ToggleButton(bool show)
+    public void ToggleIndicator(bool show)
     {
-        button.SetActive(show);
+        indicator.SetActive(show);
     }
 
-    //stard dialogue
+    //Start Dialogue
     public void StartDialogue()
     {
-        if (Started)
+        if (started)
             return;
-        
-        //bolean start point
-        Started = true;
-        //show the window
+
+        //Boolean to indicate that we have started
+        started = true;
+        //Show the window
         ToggleWindow(true);
         //hide the indicator
-        ToggleButton(false);
-        //start whit first dialogue
+        ToggleIndicator(false);
+        //Start with first dialogue
         GetDialogue(0);
-
     }
 
     private void GetDialogue(int i)
     {
-        //start index at 0;
+        //start index at zero
         index = i;
-        //reset the character index
-        charindex = 0;
+        //Reset the character index
+        charIndex = 0;
         //clear the dialogue component text
         dialogueText.text = string.Empty;
-        //start writing
+        //Start writing
         StartCoroutine(Writing());
     }
 
-    //end dialogue
+    //End Dialogue
     public void EndDialogue()
     {
-        //hide the dialogue
+        //Stared is disabled
+        started = false;
+        //Disable wait for next as well
+        waitForNext = false;
+        //Stop all Ienumerators
+        StopAllCoroutines();
+        //Hide the window
         ToggleWindow(false);
-
     }
-
-    //writing logic
+    //Writing logic
     IEnumerator Writing()
     {
         yield return new WaitForSeconds(writingSpeed);
 
-        string CurrentDialogue = dialogues[index];
-        //write the chharacter
-        dialogueText.text += CurrentDialogue[charindex];
-        //increase the character index
-        charindex++;
-        //end of sentence
-        if(charindex < CurrentDialogue.Length)
+        string currentDialogue = dialogues[index];
+        //Write the character
+        dialogueText.text += currentDialogue[charIndex];
+        //increase the character index 
+        charIndex++;
+        //Make sure you have reached the end of the sentence
+        if (charIndex < currentDialogue.Length)
         {
-            //wait n seconds
+            //Wait x seconds 
             yield return new WaitForSeconds(writingSpeed);
-            //restart the same process
+            //Restart the same process
             StartCoroutine(Writing());
         }
         else
         {
-            //end sentence and start next one
-            WaitForNext = true;
-
+            //End this sentence and wait for the next one
+            waitForNext = true;
         }
     }
 
-    private void Uptide()
+    private void Update()
     {
-        if (!Started)
+        if (!started)
             return;
 
-        if(WaitForNext && Input.GetKeyDown(KeyCode.K))
+        if (waitForNext && Input.GetKeyDown(KeyCode.E))
         {
-            WaitForNext = false;
+            waitForNext = false;
             index++;
 
-            if(index < dialogues.Count)
+            //Check if we are in the scope fo dialogues List
+            if (index < dialogues.Count)
             {
+                //If so fetch the next dialogue
                 GetDialogue(index);
             }
             else
             {
-                // end dialogue
+                //If not end the dialogue process
+                ToggleIndicator(true);
                 EndDialogue();
             }
         }
     }
+
 }
