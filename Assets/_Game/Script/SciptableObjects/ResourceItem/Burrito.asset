@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85096f7d27ee820459ff0026e7b020bc, type: 3}
-  m_Name: boccale vuoto
+  m_Name: Burrito
   m_EditorClassIdentifier: 
-  ID: 2
-  DislayName: boccale vuoto
-  Description: "questo \xE8 il boccale vuoto da riempire"
-  Icon: {fileID: 21300000, guid: 4fad38df08478bc4eae7e54c02916ec6, type: 3}
+  ID: 9
+  DislayName: Burrito
+  Description: 
+  Icon: {fileID: 21300000, guid: a612442271a64bc4795dbcf47df59e52, type: 3}
   MaxStackSize: 5
   GoldValue: 10
-  ItemPrefab: {fileID: 510118913416451513, guid: 3c55583356265684ba2fece08d016035, type: 3}
+  ItemPrefab: {fileID: 510118913416451513, guid: 28ad86d2dbff9544bb737aa03a186b91, type: 3}

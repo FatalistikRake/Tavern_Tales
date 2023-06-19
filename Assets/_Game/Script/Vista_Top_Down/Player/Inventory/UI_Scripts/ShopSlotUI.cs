@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,8 +13,12 @@ public class ShopSlotUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _itemCount;
     [SerializeField] private ShopSlot _assingnedItemSlot;
 
+    public ShopSlot AssingnedItemSlot => _assingnedItemSlot;
+
     [SerializeField] private Button _addItemToCartButton;
     [SerializeField] private Button _removeItemFromCartButton;
+
+    private int _tempAmount;
 
     private ShopKeeperDisplay ParentDisplay { get; set; }
     public float MarkUp { get; private set; }
@@ -37,6 +42,7 @@ public class ShopSlotUI : MonoBehaviour
     {
         _assingnedItemSlot = slot;
         MarkUp = markUp;
+        _tempAmount = slot.StackSize;
         UpdateUISlot();
     }
 
@@ -47,7 +53,7 @@ public class ShopSlotUI : MonoBehaviour
             _itemsprite.sprite = _assingnedItemSlot.ItemData.Icon;
             _itemsprite.color = Color.white;
             _itemCount.text = _assingnedItemSlot.StackSize.ToString();
-            _itemName.text = $"{_assingnedItemSlot.ItemData.DislayName} - {_assingnedItemSlot.ItemData.GoldValue} Gold";
+            _itemName.text = $"{_assingnedItemSlot.ItemData.DislayName} - {_assingnedItemSlot.ItemData.GoldValue} G";
         }
         else
         {
@@ -60,12 +66,21 @@ public class ShopSlotUI : MonoBehaviour
 
     private void RemoveItemFromCart()
     {
-        Debug.Log("Removin item car");
+        if (_tempAmount == _assingnedItemSlot.StackSize) return;
+
+        _tempAmount++;
+        ParentDisplay.RemoveItemFromCart(this);
+        _itemCount.text = _tempAmount.ToString();
 
     }
 
     private void AddItemToCart()
     {
-        Debug.Log("Adding item car");
+        if (_tempAmount > 0)
+        {
+            _tempAmount--;
+            ParentDisplay.AddItemCart(this);
+            _itemCount.text = _tempAmount.ToString();
+        }
     }
 }
