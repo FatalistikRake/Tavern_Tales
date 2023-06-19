@@ -9,7 +9,7 @@ public class Dialogue : MonoBehaviour
     //window
     public GameObject window;
     //indicator
-    public GameObject indicator;
+    public GameObject button;
     //text component
     public TMP_Text dialogueText;
     //dialogues list
@@ -21,11 +21,16 @@ public class Dialogue : MonoBehaviour
     //character index
     private int charindex;
     //starded boolean
-    hi
     private bool Started;
     //wait for nect bolean
     private bool WaitForNext;
-    
+
+    private void Awake()
+    {
+        ToggleButton(false);
+        ToggleWindow(false);
+    }
+
     //show window
     private void ToggleWindow(bool show)
     {
@@ -33,9 +38,9 @@ public class Dialogue : MonoBehaviour
     }
 
     //hide indicator
-    private void ToggleIndicator(bool show)
+    public void ToggleButton(bool show)
     {
-        indicator.SetActive(show);
+        button.SetActive(show);
     }
 
     //stard dialogue
@@ -49,7 +54,7 @@ public class Dialogue : MonoBehaviour
         //show the window
         ToggleWindow(true);
         //hide the indicator
-        ToggleIndicator(false);
+        ToggleButton(false);
         //start whit first dialogue
         GetDialogue(0);
 
@@ -78,6 +83,8 @@ public class Dialogue : MonoBehaviour
     //writing logic
     IEnumerator Writing()
     {
+        yield return new WaitForSeconds(writingSpeed);
+
         string CurrentDialogue = dialogues[index];
         //write the chharacter
         dialogueText.text += CurrentDialogue[charindex];
@@ -89,7 +96,7 @@ public class Dialogue : MonoBehaviour
             //wait n seconds
             yield return new WaitForSeconds(writingSpeed);
             //restart the same process
-            StartCoroutin(Writing());
+            StartCoroutine(Writing());
         }
         else
         {
