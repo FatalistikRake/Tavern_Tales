@@ -13,6 +13,7 @@ TagManager:
   - NPC
   - Uscita
   - PosizionePiatto
+  - Shop
   layers:
   - Default
   - TransparentFX

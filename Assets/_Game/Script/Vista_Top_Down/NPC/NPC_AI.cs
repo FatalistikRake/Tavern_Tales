@@ -67,7 +67,7 @@ public class NPC_AI : MonoBehaviour
         if (!p.error)
         {
             path = p;
-            Debug.Log(p);
+            //Debug.Log(p);
             currentWaypoint = 0;
         }
     }

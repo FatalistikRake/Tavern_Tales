@@ -1,21 +1,37 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class SortingLayerScript : SingletonClass<SortingLayerScript>
 {
     public List<Transform> objectsToSort;
     public List<Transform> characters;
     private Transform player;
+    private Transform shop;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
+        shop = GameObject.FindWithTag("Shop").transform;
     }
 
     private void Start()
     {
         characters.Add(player);
+        objectsToSort.Add(shop);
+
+        GameObject[] tavoliObjects = GameObject.FindGameObjectsWithTag("Tavoli");
+        foreach (GameObject tavoliObject in tavoliObjects)
+        {
+            objectsToSort.Add(tavoliObject.transform);
+        }
+
+        GameObject[] sedileObjects = GameObject.FindGameObjectsWithTag("Sedile");
+        foreach (GameObject sedileObject in sedileObjects)
+        {
+            objectsToSort.Add(sedileObject.transform);
+        }
     }
 
 

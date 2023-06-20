@@ -19,11 +19,12 @@ public abstract class InventoryHolder : MonoBehaviour
     protected virtual void Awake()
     {
         SaveLoad.OnLoadGame += LoadInventory;
-        
+        _gold = 5000;
         primaryInventorySystem = new InventorySystem(inventorySize, _gold);
     }
 
     protected abstract void LoadInventory(SaveData saveData);
+
 }
 
 [System.Serializable]

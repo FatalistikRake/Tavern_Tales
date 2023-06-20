@@ -65,8 +65,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2.5, y: 5}
+  m_Offset: {x: -0.41956732, y: 0}
+  m_Size: {x: 1.6608654, y: 5}
   m_Direction: 0
 --- !u!114 &5721296057322969406
 MonoBehaviour:
@@ -146,7 +146,7 @@ Transform:
   - {fileID: 631970083586429446}
   - {fileID: 1616918572785177439}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &659528002571386696
 SpriteRenderer:
