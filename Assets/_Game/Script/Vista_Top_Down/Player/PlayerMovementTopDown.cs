@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class PlayerMovementTopDown : MonoBehaviour
 {
+
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
@@ -20,7 +21,7 @@ public class PlayerMovementTopDown : MonoBehaviour
     [HideInInspector]
     public Vector2 piattoPosition;
     public bool siPuoPosizionarePiatto;
-
+    
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();

@@ -113,7 +113,7 @@ public class NPC_AI : MonoBehaviour
         animator.SetFloat("Speed", reachedEndOfPath? 0 : 1 );
 
 
-        if (distance < 1.2 && TargetChair != null)
+        if (distance < 2 && TargetChair != null)
         {
             NPCSiSiede();
         }
@@ -139,6 +139,10 @@ public class NPC_AI : MonoBehaviour
     {
         colliderComponent.enabled = true;
         spriteRenderer.sortingOrder = 0;
+        
+
+
+        SetTargetExit();
 
         Debug.Log("NPCSialza " + transform.position);
     }

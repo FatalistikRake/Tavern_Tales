@@ -48,7 +48,7 @@ public class MouseItemData : MonoBehaviour
 
             if (Mouse.current.leftButton.wasPressedThisFrame && !IsPointerOverUIObject())
             {
-                if(AssignedInventorySlot.ItemData.ItemPrefab != null) Instantiate(AssignedInventorySlot.ItemData.ItemPrefab, _playerTransform .position + _playerTransform.forward * _dropOffset,
+                /*if(AssignedInventorySlot.ItemData.ItemPrefab != null) Instantiate(AssignedInventorySlot.ItemData.ItemPrefab, _playerTransform.position + _playerTransform.forward * _dropOffset,
                     Quaternion.identity);
 
                 if (AssignedInventorySlot.StackSize > 1)
@@ -59,8 +59,9 @@ public class MouseItemData : MonoBehaviour
                 else
                 {
                     ClearSlot();    
-                }
-                
+                }*/
+
+                Debug.Log("Non puoi buttare le cose per terra");
             }
         }
     }

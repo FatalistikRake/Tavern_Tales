@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
+using Unity.VisualScripting;
 
 [System.Serializable]
 public class InventorySystem
@@ -16,6 +17,8 @@ public class InventorySystem
     public int InventorySize => InventorySlots.Count;
 
     public UnityAction<InventorySlot> OnInventorySlotChanged;
+
+    
 
     public InventorySystem(int size) // Constructor that sets the amount of slots.
     {
@@ -145,5 +148,10 @@ public class InventorySystem
                 OnInventorySlotChanged?.Invoke(slot);
             }
         }
+    }
+
+    public void startMoney(int inizioSoldi)
+    {
+        _gold = inizioSoldi;
     }
 }

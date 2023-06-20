@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -16,11 +17,28 @@ public class InventoryItemData : ScriptableObject
     public string Description;
     public Sprite Icon;
     public int MaxStackSize;
-    public int GoldValue = 500000;
+    public int GoldValue;
     public GameObject ItemPrefab;
+
+    private PlayerInventoryHolder _playerInventory;
+    private InventorySlot AssignedInventorySlot;
+    private Transform _playerTransform;
+    private float _dropOffset = 0.5f;
 
     public void UseItem()
     {
         Debug.Log($"Using {DisplayName}");
+        if (AssignedInventorySlot.ItemData.ItemPrefab != null && _playerInventory.siPuoPosizionarePiatto)
+        {
+            Instantiate(AssignedInventorySlot.ItemData.ItemPrefab, _playerInventory.piattoPosition, Quaternion.identity);
+
+            if (AssignedInventorySlot.StackSize > 1)
+            {
+                AssignedInventorySlot.AddToStack(-1);
+            }
+        }
+
+        
+
     }
 }

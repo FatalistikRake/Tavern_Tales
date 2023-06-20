@@ -1,4 +1,6 @@
-/*using UnityEngine.InputSystem;
+using System.Diagnostics;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class HotbarDisplay : StaticInventoryDisplay
 {
@@ -35,8 +37,8 @@ public class HotbarDisplay : StaticInventoryDisplay
         _playerControls.Player.Hotbar6.performed += Hotbar6;
         _playerControls.Player.Hotbar7.performed += Hotbar7;
         _playerControls.Player.Hotbar8.performed += Hotbar8;
-        _playerControls.Player.Hotbar9.performed += Hotbar9;
-        _playerControls.Player.Hotbar10.performed += Hotbar10;
+        /*_playerControls.Player.Hotbar9.performed += Hotbar9;
+        _playerControls.Player.Hotbar10.performed += Hotbar10;*/
         _playerControls.Player.UseItem.performed += UseItem;
     }
 
@@ -55,8 +57,8 @@ public class HotbarDisplay : StaticInventoryDisplay
         _playerControls.Player.Hotbar6.performed -= Hotbar6;
         _playerControls.Player.Hotbar7.performed -= Hotbar7;
         _playerControls.Player.Hotbar8.performed -= Hotbar8;
-        _playerControls.Player.Hotbar9.performed -= Hotbar9;
-        _playerControls.Player.Hotbar10.performed -= Hotbar10;
+        /*_playerControls.Player.Hotbar9.performed -= Hotbar9;
+        _playerControls.Player.Hotbar10.performed -= Hotbar10;*/
         _playerControls.Player.UseItem.performed -= UseItem;
     }
     
@@ -102,7 +104,7 @@ public class HotbarDisplay : StaticInventoryDisplay
         SetIndex(7);
     }
     
-    private void Hotbar9(InputAction.CallbackContext obj)
+    /*private void Hotbar9(InputAction.CallbackContext obj)
     {
         SetIndex(8);
     }
@@ -110,7 +112,7 @@ public class HotbarDisplay : StaticInventoryDisplay
     private void Hotbar10(InputAction.CallbackContext obj)
     {
         SetIndex(9);
-    }
+    }*/
     #endregion
 
     private void Update()
@@ -118,7 +120,7 @@ public class HotbarDisplay : StaticInventoryDisplay
         if (_playerControls.Player.MouseWheel.ReadValue<float>() > 0.1f) ChangeIndex(1);
         if (_playerControls.Player.MouseWheel.ReadValue<float>() < -0.1f) ChangeIndex(-1);
     }
-    
+
     private void UseItem(InputAction.CallbackContext obj)
     {
         if (slots[_currentIndex].AssignedInventorySlot.ItemData != null) slots[_currentIndex].AssignedInventorySlot.ItemData.UseItem();
@@ -145,4 +147,3 @@ public class HotbarDisplay : StaticInventoryDisplay
         slots[_currentIndex].ToggleHighlight();
     }
 }
-*/
