@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85096f7d27ee820459ff0026e7b020bc, type: 3}
+  m_Script: {fileID: 11500000, guid: e0c4e3f5e196ad84cbef2ad2ebe7c428, type: 3}
   m_Name: Bugel
   m_EditorClassIdentifier: 
-  ID: 11
-  DislayName: Bugel
-  Description: 
+  ID: 5
+  DisplayName: Bagel
+  Description: This is a Bagel
   Icon: {fileID: 21300000, guid: 86115fa5482fcb141bae2c77d6960e65, type: 3}
   MaxStackSize: 5
-  GoldValue: 10
+  GoldValue: 20
   ItemPrefab: {fileID: 510118913416451513, guid: e54b5ba4b0738b941be90cede0bde010, type: 3}

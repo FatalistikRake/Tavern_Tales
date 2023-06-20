@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85096f7d27ee820459ff0026e7b020bc, type: 3}
+  m_Script: {fileID: 11500000, guid: e0c4e3f5e196ad84cbef2ad2ebe7c428, type: 3}
   m_Name: Bun
   m_EditorClassIdentifier: 
-  ID: 7
-  DislayName: Bun
-  Description: 
+  ID: 6
+  DisplayName: Bun
+  Description: This is a Bun
   Icon: {fileID: 21300000, guid: 134eadbeca27d164e9853295462a5a6c, type: 3}
   MaxStackSize: 5
-  GoldValue: 10
+  GoldValue: 20
   ItemPrefab: {fileID: 510118913416451513, guid: 9cf1ebfe42489344f839caaacdd6dee1, type: 3}

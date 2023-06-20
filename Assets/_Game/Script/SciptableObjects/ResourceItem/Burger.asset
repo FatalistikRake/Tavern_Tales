@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85096f7d27ee820459ff0026e7b020bc, type: 3}
+  m_Script: {fileID: 11500000, guid: e0c4e3f5e196ad84cbef2ad2ebe7c428, type: 3}
   m_Name: Burger
   m_EditorClassIdentifier: 
-  ID: 8
-  DislayName: Burger
-  Description: 
+  ID: 7
+  DisplayName: Burger
+  Description: This is a Burger
   Icon: {fileID: 21300000, guid: ec7ab019bee637842b55acdd0ad59599, type: 3}
-  MaxStackSize: 5
-  GoldValue: 10
+  MaxStackSize: 2
+  GoldValue: 100
   ItemPrefab: {fileID: 510118913416451513, guid: 57df2d6dccd3fcd45837a16f95af8352, type: 3}
