@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 1238871287464030570}
   - component: {fileID: 300324610124903407}
   - component: {fileID: 2162474666303457518}
-  - component: {fileID: 593634098533095965}
   - component: {fileID: 64518238274829496}
   - component: {fileID: 5944980740927173342}
   - component: {fileID: 1184647434967153772}
   - component: {fileID: 6872138117233446263}
   - component: {fileID: 8217951529228050108}
-  - component: {fileID: 8383747073382483004}
+  - component: {fileID: 2661781199366843650}
   m_Layer: 7
   m_Name: NPC_1
   m_TagString: NPC
@@ -33,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 434343768119841183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 11.5, y: 11.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -121,41 +120,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &593634098533095965
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 434343768119841183}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.005, y: -0.079}
-  m_Size: {x: 0.01, y: 0.01}
-  m_Direction: 1
 --- !u!95 &64518238274829496
 Animator:
   serializedVersion: 5
@@ -275,8 +239,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueScript: {fileID: 3945855006455732377}
---- !u!70 &8383747073382483004
-CapsuleCollider2D:
+--- !u!60 &2661781199366843650
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -304,12 +268,36 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.2, y: 0.2}
-  m_Direction: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.021740314, y: -0.06447764}
+      - {x: -0.02983284, y: -0.06541474}
+      - {x: -0.03467114, y: -0.068416394}
+      - {x: -0.03594209, y: -0.07233022}
+      - {x: -0.034620777, y: -0.07752305}
+      - {x: -0.031469017, y: -0.079701334}
+      - {x: 0.036877304, y: -0.08200011}
+      - {x: 0.040384766, y: -0.0816413}
+      - {x: 0.042135965, y: -0.07949964}
+      - {x: 0.042606663, y: -0.07645074}
+      - {x: 0.042193916, y: -0.07298748}
+      - {x: 0.04132793, y: -0.07058908}
+      - {x: 0.039706007, y: -0.06785105}
+      - {x: 0.030742476, y: -0.06491167}
+  m_UseDelaunayMesh: 0
 --- !u!1 &3796772558527969510
 GameObject:
   m_ObjectHideFlags: 0

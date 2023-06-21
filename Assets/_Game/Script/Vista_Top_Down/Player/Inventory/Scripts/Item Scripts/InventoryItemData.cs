@@ -8,7 +8,7 @@ using UnityEngine;
 /// It could be inherited from to have branched version of items, for example potions and equipment.
 /// </summary>
 
-[CreateAssetMenu(menuName = "Inventory System/Inventory Item")]
+[CreateAssetMenu(menuName = "InventoryM System/InventoryM Item")]
 public class InventoryItemData : ScriptableObject
 {
     public int ID = -1;

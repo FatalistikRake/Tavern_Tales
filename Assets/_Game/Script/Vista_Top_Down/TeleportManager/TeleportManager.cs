@@ -14,11 +14,18 @@ public class TeleportManager : MonoBehaviour
     private void Start()
     {
         GameEvent.Instance.onPickupObject += OnItemPickup;
+        sceneStateManager.resetData();
     }
 
     private void OnDestroy()
     {
         GameEvent.Instance.onPickupObject -= OnItemPickup;
+    }
+
+    private void Update()
+    {
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+        objectToTransport = player;
     }
 
     [System.Obsolete]

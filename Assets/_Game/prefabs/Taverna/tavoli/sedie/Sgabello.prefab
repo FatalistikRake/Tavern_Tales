@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2318032521818467354}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0.97, z: 0}
+  m_LocalPosition: {x: 0.01, y: 1.44, z: 0}
   m_LocalScale: {x: 0.099999994, y: 0.07142857, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2980019806301398703}
   m_Layer: 8
   m_Name: Sgabello
-  m_TagString: Untagged
+  m_TagString: Sedile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +57,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8755853259163180047}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.62, y: -0.85, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
@@ -65,7 +65,7 @@ Transform:
   - {fileID: 4909227532061443230}
   - {fileID: 187723337217519911}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5954702956569205820
 SpriteRenderer:
@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chairNumber: 0
   isOccupied: 0
+  platePositionIsOccupied: 0
   SittingPosition: {fileID: 4909227532061443230}
   PlatePosition: {fileID: 187723337217519911}
 --- !u!1 &8806070124096701284
@@ -206,7 +207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8806070124096701284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.010892266, y: 1.87, z: 0}
+  m_LocalPosition: {x: 0.010892266, y: 2.348, z: 0}
   m_LocalScale: {x: 0.1, y: 0.09999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -245,7 +246,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5379133}
+  m_Offset: {x: 0, y: -8.449538}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -256,7 +257,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 30, y: 31.58365}
+  m_Size: {x: 30, y: 37.46006}
   m_EdgeRadius: 0
 --- !u!114 &1685108299588627706
 MonoBehaviour:
