@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Linq;
 using static UnityEditor.Progress;
 
-public class Inventory : MonoBehaviour
+public class InventoryM : MonoBehaviour
 {
     public float scrollSpeed = 1f; // Velocità di scorrimento tra gli slot
 

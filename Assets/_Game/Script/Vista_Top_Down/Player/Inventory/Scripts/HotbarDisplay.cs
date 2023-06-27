@@ -8,6 +8,9 @@ public class HotbarDisplay : StaticInventoryDisplay
     private int _currentIndex = 0;
 
     private PlayerControls _playerControls;
+    private PlayerMovementTopDown _playerMovementTopDown;
+    private ChairStatus _chairStatus;
+    private ItemSlot _itemSlot;
 
     private void Awake()
     {
@@ -22,6 +25,10 @@ public class HotbarDisplay : StaticInventoryDisplay
         _maxIndexSize = slots.Length - 1;
         
         slots[_currentIndex].ToggleHighlight();
+
+        _playerMovementTopDown = FindAnyObjectByType<PlayerMovementTopDown>();
+        _chairStatus = FindAnyObjectByType<ChairStatus>();
+        _itemSlot = GetComponent<ItemSlot>();
     }
 
     protected override void OnEnable()
@@ -123,7 +130,11 @@ public class HotbarDisplay : StaticInventoryDisplay
 
     private void UseItem(InputAction.CallbackContext obj)
     {
-        if (slots[_currentIndex].AssignedInventorySlot.ItemData != null) slots[_currentIndex].AssignedInventorySlot.ItemData.UseItem();
+        if (slots[_currentIndex].AssignedInventorySlot.ItemData != null) 
+            slots[_currentIndex].AssignedInventorySlot.ItemData.UseItem(_playerMovementTopDown, _chairStatus, _itemSlot);
+
+        if (_itemSlot.StackSize > 1) _itemSlot.AddToStack(-1);
+
     }
 
     private void ChangeIndex(int direction)

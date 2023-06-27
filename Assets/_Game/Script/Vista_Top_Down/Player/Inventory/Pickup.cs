@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Pikup : MonoBehaviour
 {
-    private Inventory inventory;
+    private InventoryM inventory;
     public GameObject itemButtom;
     public bool isStacable;
     private void Start()
     {
-        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryM>();
     }
 
     /*private void Update()

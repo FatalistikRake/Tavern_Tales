@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
-    Inventory inventory;
+    InventoryM inventory;
     public GameObject item;
 
     public int countStack;
@@ -12,7 +12,7 @@ public class Slot : MonoBehaviour
 
     private void Start()
     {
-        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryM>();
     }
 
     public void DropItem()

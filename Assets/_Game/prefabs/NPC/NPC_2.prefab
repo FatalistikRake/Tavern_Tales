@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6556193643607451222}
   - component: {fileID: 2814768650215800755}
   - component: {fileID: 3154957874716866012}
-  - component: {fileID: 8536105280007097871}
   - component: {fileID: 8568010612378289027}
   - component: {fileID: 219100906576312946}
   - component: {fileID: 5850391517463050552}
@@ -121,41 +120,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &8536105280007097871
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 47851015757630835}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.005, y: -0.079}
-  m_Size: {x: 0.01, y: 0.01}
-  m_Direction: 1
 --- !u!60 &8568010612378289027
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -163,7 +127,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47851015757630835}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -200,26 +164,20 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.2821874, y: -0.37486282}
-      - {x: 0.24872963, y: -0.35363373}
-      - {x: -0.24359736, y: -0.35422644}
-      - {x: -0.27575848, y: -0.36829504}
-      - {x: -0.31564695, y: -0.40657914}
-      - {x: -0.346815, y: -0.43619308}
-      - {x: -0.3756836, y: -0.46808445}
-      - {x: -0.37474364, y: -0.5302044}
-      - {x: -0.35510203, y: -0.55537164}
-      - {x: -0.31584907, y: -0.5961792}
-      - {x: -0.24835913, y: -0.6252618}
-      - {x: -0.18598084, y: -0.6540356}
-      - {x: 0.18710206, y: -0.6542373}
-      - {x: 0.24659881, y: -0.63343847}
-      - {x: 0.3138091, y: -0.59478736}
-      - {x: 0.355541, y: -0.5566604}
-      - {x: 0.37660727, y: -0.533597}
-      - {x: 0.3786627, y: -0.4641274}
-      - {x: 0.34647134, y: -0.43228275}
-      - {x: 0.31270272, y: -0.40075848}
+    - - {x: -0.021740314, y: -0.06447764}
+      - {x: -0.02983284, y: -0.06541474}
+      - {x: -0.03467114, y: -0.068416394}
+      - {x: -0.03594209, y: -0.07233022}
+      - {x: -0.034620777, y: -0.07752305}
+      - {x: -0.031469017, y: -0.079701334}
+      - {x: 0.036877304, y: -0.08200011}
+      - {x: 0.040384766, y: -0.0816413}
+      - {x: 0.042135965, y: -0.07949964}
+      - {x: 0.042606663, y: -0.07645074}
+      - {x: 0.042193916, y: -0.07298748}
+      - {x: 0.04132793, y: -0.07058908}
+      - {x: 0.039706007, y: -0.06785105}
+      - {x: 0.030742476, y: -0.06491167}
   m_UseDelaunayMesh: 0
 --- !u!95 &219100906576312946
 Animator:

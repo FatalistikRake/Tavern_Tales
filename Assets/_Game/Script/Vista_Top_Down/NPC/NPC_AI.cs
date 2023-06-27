@@ -67,7 +67,7 @@ public class NPC_AI : MonoBehaviour
         if (!p.error)
         {
             path = p;
-            Debug.Log(p);
+            //Debug.Log(p);
             currentWaypoint = 0;
         }
     }
@@ -115,6 +115,7 @@ public class NPC_AI : MonoBehaviour
 
         if (distance < 2 && TargetChair != null)
         {
+
             NPCSiSiede();
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HotbarSelector : MonoBehaviour
 {
-    [SerializeField, Min(0)] private int _maxIndexSize = 9;
+    [SerializeField, Min(0)] private int _maxIndexSize = 8;
     
     private int _currentIndex = 0;
 

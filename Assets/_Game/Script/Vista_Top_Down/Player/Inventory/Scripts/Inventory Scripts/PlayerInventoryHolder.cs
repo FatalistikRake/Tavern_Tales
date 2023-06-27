@@ -3,9 +3,9 @@ using UnityEngine.Events;
 public class PlayerInventoryHolder : InventoryHolder
 {
 
-    
+
     public static UnityAction OnPlayerInventoryChanged;
-    
+
     public static UnityAction<InventorySystem, int> OnPlayerInventoryDisplayRequested;
 
 
@@ -23,7 +23,7 @@ public class PlayerInventoryHolder : InventoryHolder
             OnPlayerInventoryChanged?.Invoke();
         }
     }
-    
+
 
     void Update()
     {
@@ -38,30 +38,5 @@ public class PlayerInventoryHolder : InventoryHolder
         }
 
         return false;
-    }
-
-    [HideInInspector]
-    public Vector2 piattoPosition;
-    [HideInInspector]
-    public bool siPuoPosizionarePiatto;
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("PosizionePiatto"))
-        {
-            siPuoPosizionarePiatto = true;
-            // Ottenere la posizione del piatto
-            piattoPosition = collision.transform.position;
-            Debug.Log("PosizionePiatto" + piattoPosition);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("PosizionePiatto"))
-        {
-            siPuoPosizionarePiatto = false;
-        }
     }
 }
