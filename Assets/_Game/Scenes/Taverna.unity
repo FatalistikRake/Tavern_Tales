@@ -2649,7 +2649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149662251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.52, y: 9.906, z: 0}
+  m_LocalPosition: {x: 7.52, y: 11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2733,7 +2733,7 @@ GameObject:
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1202182844
 Transform:
   m_ObjectHideFlags: 0
@@ -3891,7 +3891,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763811638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.38, y: 10.22, z: 0}
+  m_LocalPosition: {x: -7.38, y: 11.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4688,8 +4688,8 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 402245973}
   - {fileID: 365494634}
+  - {fileID: 402245973}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4710,7 +4710,7 @@ MonoBehaviour:
     inventorySlots: []
     _gold: 0
   offset: 8
-  _gold: 0
+  _gold: 999
   piattoPosition: {x: 0, y: 0}
   siPuoPosizionarePiatto: 0
 --- !u!114 &2120421464
@@ -9405,7 +9405,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6566579582684286981}
   m_HandleRect: {fileID: 6566579581453328582}
   m_Direction: 2
-  m_Value: 1.0000005
+  m_Value: 1.0000002
   m_Size: 0.618032
   m_NumberOfSteps: 0
   m_OnValueChanged:
