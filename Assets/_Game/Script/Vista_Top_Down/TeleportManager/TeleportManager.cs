@@ -14,7 +14,6 @@ public class TeleportManager : MonoBehaviour
     private void Start()
     {
         GameEvent.Instance.onPickupObject += OnItemPickup;
-        sceneStateManager.resetData();
     }
 
     private void OnDestroy()
