@@ -98,20 +98,15 @@ public class NPC_AI : MonoBehaviour
 
         float distance = Vector2.Distance(rb.position, target.position);
 
-        //if (force.x >= 0.01f)
-        //{
-        //    npcGFX.localScale = new Vector2(-1f, 1f);
-        //}
-        //else if (force.y <= -0.01f)
-        //{
-        //    npcGFX.localScale = new Vector2(1f, 1f);
-        //}
-
         // Aggiorna i parametri dell'animator in base al movimento dell'NPC
         animator.SetFloat("Horizontal", -direction.x);
         animator.SetFloat("Vertical", -direction.y);
         animator.SetFloat("Speed", reachedEndOfPath? 0 : 1 );
 
+        if (!reachedEndOfPath && speed == 0)
+        {
+            UpdatePath();
+        }
 
         if (distance < 2 && TargetChair != null)
         {
@@ -150,7 +145,7 @@ public class NPC_AI : MonoBehaviour
 
     IEnumerator SetTargetExit()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         target = GameObject.Find("UscitaNPC").transform;
         isWaiting = false;
     }
